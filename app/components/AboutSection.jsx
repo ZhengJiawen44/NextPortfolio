@@ -4,8 +4,8 @@ import Socials from "./Socials";
 const About = () => {
   return (
     <div className="mb-21">
-      <h1 className="mb-0.5">Full Stack developer</h1>
-      <h3 className="mt-5 mb-0.5">Zheng Jiawen</h3>
+      <h1 className="mb-0.5 font-extrabold">Full Stack developer</h1>
+      <h3 className="mt-5 text-[1.25rem] mb-0.5 font-semibold">Zheng Jiawen</h3>
       <Socials />
       <div className={styles.greenPopupGrid}>
         <div className={styles.greenPopup} />

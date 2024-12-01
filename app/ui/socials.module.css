@@ -1,0 +1,6 @@
+.socialItem {
+  &:hover {
+    color: var(--primary-light);
+    scale: 1.25;
+  }
+}

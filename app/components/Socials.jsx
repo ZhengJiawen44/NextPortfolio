@@ -3,20 +3,21 @@ import { TbBrandBluesky } from "react-icons/tb";
 import { TbBrandGithub } from "react-icons/tb";
 import { TbMail } from "react-icons/tb";
 import { TbBrandLinkedin } from "react-icons/tb";
+import styles from "@/app/ui/socials.module.css";
 const Socials = () => {
   return (
-    <div className="mt-0.9 flex items-center gap-1 content-center">
-      <a href="/" className="hover:primary-medium hover:scale-110">
-        <TbBrandBluesky className="h-7 w-7" />
+    <div className="mt-2 flex items-center gap-4 content-center">
+      <a href="/" className={styles.socialItem}>
+        <TbBrandBluesky className="logo" />
       </a>
-      <a href="/" className="hover:primary-medium hover:scale-110">
-        <TbBrandGithub className="h-7 w-7" />
+      <a href="/" className={styles.socialItem}>
+        <TbBrandGithub className="logo" />
       </a>
-      <a href="/" className="hover:primary-medium hover:scale-110">
-        <TbMail className="h-7 w-7" />
+      <a href="/" className={styles.socialItem}>
+        <TbMail className="logo" />
       </a>
-      <a href="/" className="hover:primary-medium hover:scale-110">
-        <TbBrandLinkedin className="h-7 w-7" />
+      <a href="/" className={styles.socialItem}>
+        <TbBrandLinkedin className="logo" />
       </a>
     </div>
   );
