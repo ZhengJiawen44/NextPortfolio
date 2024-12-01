@@ -8,38 +8,43 @@ import { TbMail } from "react-icons/tb";
 import DashItems from "./DashItems";
 import styles from "@/app/ui/island.module.css";
 import clsx from "clsx";
-//import { forwardRef } from "react";
+import { forwardRef } from "react";
 
-// const IslandDash = forwardRef(({ isVertical }, ref) => {
-//const isItemVertical = isVertical ? "dash-items vertical" : "dash-items ";
-const IslandDash = () => {
+const IslandDash = forwardRef(({ isVertical }, ref) => {
+  const isItemVertical = clsx(
+    styles.dashItems,
+    isVertical && `${styles.vertical}  ${styles.show}`
+  );
   return (
-    <div>
-      <div className={styles.dashboard}>
+    <>
+      <div
+        ref={ref}
+        className={clsx(
+          styles.dashboard,
+          isVertical && `${styles.vertical} ${styles.show}`
+        )}
+      >
+        <DashItems icon={<TbHome className={isItemVertical} />} label="Home" />
         <DashItems
-          icon={<TbHome className={styles.dashItems} />}
-          label="Home"
-        />
-        <DashItems
-          icon={<TbBriefcase className={styles.dashItems} />}
+          icon={<TbBriefcase className={isItemVertical} />}
           label="Project"
         />
         <DashItems
-          icon={<TbTool className={styles.dashItems} />}
+          icon={<TbTool className={isItemVertical} />}
           label="Tech I use"
         />
         <DashItems
-          icon={<TbNotebook className={styles.dashItems} />}
+          icon={<TbNotebook className={isItemVertical} />}
           label="Blogs"
         />
         <DashItems
-          icon={<TbMail className={styles.dashItems} />}
+          icon={<TbMail className={isItemVertical} />}
           label="Contact"
         />
       </div>
       <TranslateDash />
-    </div>
+    </>
   );
-};
+});
 
 export default IslandDash;

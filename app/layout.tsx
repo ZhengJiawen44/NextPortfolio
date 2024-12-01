@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@/app/ui/global.css";
 import { space_grotesk, space_mono } from "@/app/ui/fonts";
-import IslandDash from "@/app/components/IslandDash";
+
 export const metadata: Metadata = {
   title: "Zheng Jiawen",
   description: "Zheng Jiawen's portfolio site",
@@ -17,10 +17,7 @@ export default function RootLayout({
       <body
         className={`${space_grotesk.className} ${space_mono.className} antialiased`}
       >
-        <IslandDash />
-        <div className="m-auto mt-[15vh] w-[80vw] text-primaryMedium">
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );
