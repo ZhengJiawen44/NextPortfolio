@@ -1,12 +1,8 @@
-"use client";
-import styles from "@/app/ui/home.module.css";
-import clsx from "clsx";
-import Counter from "./components/Counter";
-import { useState } from "react";
+import AboutSection from "@/app/components/AboutSection";
 const Home = () => {
   return (
     <div>
-      <Counter />
+      <AboutSection />
     </div>
   );
 };

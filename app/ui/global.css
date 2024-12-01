@@ -1,3 +1,101 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  /* text colors */
+  --primary-light: #ffffff;
+  --primary-medium: #aaaaaa;
+  --primary-dark: hsl(0, 0%, 40%);
+
+  /* cyan */
+  --cyan-100: #43a478;
+  --cyan-200: #529979;
+  --cyan-300: #1a3d32;
+
+  /* background */
+  --background: #141414;
+  --foreground: #202020;
+  --foreground-dark: #1d1d1d;
+
+  /* variables */
+  --border-radius: 25px;
+  --letter-spacing: 1px;
+  --transition: 0.3s ease-in-out all;
+
+  /* text font size */
+  --text-small: 1.1rem;
+  --text-medium: 1.55rem;
+  --text-large: 2rem;
+
+  /* box shadow */
+  --shadow-outset: -8px 8px 10px 1px rgba(0, 0, 0, 0.4);
+
+  /*shadow-inset */
+  --shadow-inset: inset -5px 5px 6px 0px rgba(0, 0, 0, 0.64);
+}
+* {
+  transition: all 0.1s ease;
+}
+body {
+  background-color: var(--background);
+}
+
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Space Mono", monospace;
+}
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 200;
+  font-family: "Space Grotesk", monospace;
+}
+p {
+  font-family: "Space Grotesk", monospace;
+}
+.page-end {
+  margin-bottom: 30vh;
+}
+.logo {
+  height: 28px;
+  width: 28px;
+  stroke-width: 1.5;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.projectCard {
+  border-radius: 25px;
+  width: 100%;
+  margin-bottom: 2rem;
+
+  &:hover {
+    background-color: var(--foreground);
+    cursor: pointer;
+  }
+}

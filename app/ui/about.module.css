@@ -1,0 +1,44 @@
+.greenPopupGrid {
+  grid-template-rows: 1fr 1fr;
+  position: absolute;
+  right: 150px;
+}
+
+.greenPopup {
+  width: 350px;
+  height: 185px;
+  border-radius: theme("borderRadius.DEFAULT");
+  background-color: theme("colors.cyan200");
+}
+
+.dark {
+  background-color: theme("colors.cyan300");
+  margin-top: 2rem;
+}
+
+.about-me {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.socials {
+  margin-top: 0.7rem;
+  justify-content: flex-start;
+}
+
+p.indented {
+  margin-top: 5rem;
+  margin-right: 30rem;
+  margin-left: 2rem;
+  font-size: theme("fontSize.medium");
+}
+
+@media screen and (max-width: 1500px) {
+  .greenPopupGrid {
+    display: none;
+  }
+
+  p.indented {
+    margin-right: 2rem;
+  }
+}
