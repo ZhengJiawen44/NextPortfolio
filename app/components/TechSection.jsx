@@ -8,7 +8,7 @@ const TechSection = () => {
         Tech I use
       </h1>
 
-      <div className=" grid grid-cols-3 gap-3 mb-[20rem]">
+      <div className=" grid grid-cols-3 gap-5 mb-[20rem]">
         {techData.map(({ logo, title, description }) => {
           return (
             <TechCard
