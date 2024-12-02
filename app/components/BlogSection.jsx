@@ -2,6 +2,7 @@ import React from "react";
 import { TbSearch } from "react-icons/tb";
 import BlogCard from "@/app/components/BlogCard";
 import { blogData } from "@/app/utils/blogData";
+import Link from "next/link";
 const BlogSection = () => {
   return (
     <div id="Blogs">
@@ -32,6 +33,12 @@ const BlogSection = () => {
           />
         );
       })}
+      <Link
+        href="/Blog"
+        className="block w-fit m-auto text-[1.4rem] mb-[25rem]"
+      >
+        Read more
+      </Link>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 
 const BlogCard = ({ title, read, date, desc }) => {
   return (
-    <div className="mt-10 h-fit pb-10 mb-16  rounded-[25px]">
+    <div className="mt-10 h-fit pb-10 mb-10  rounded-[25px]">
       <h1 className="pt-[6rem] ml-10 mb-7 tracking-tighter text-5xl">
         {title}
       </h1>
