@@ -22,7 +22,15 @@ const BlogSection = () => {
         </div>
       </div>
       {blogData.map(({ title, read, date, desc }) => {
-        return <BlogCard title={title} read={read} date={date} desc={desc} />;
+        return (
+          <BlogCard
+            key={title}
+            title={title}
+            read={read}
+            date={date}
+            desc={desc}
+          />
+        );
       })}
     </div>
   );
