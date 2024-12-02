@@ -39,7 +39,7 @@
   --shadow-inset: inset -5px 5px 6px 0px rgba(0, 0, 0, 0.64);
 }
 * {
-  transition: all 0.1s ease;
+  transition: all 0.2s ease;
 }
 body {
   background-color: var(--background);

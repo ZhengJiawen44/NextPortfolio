@@ -1,5 +1,6 @@
 "use client";
 import AboutSection from "@/app/components/AboutSection";
+import ProjectSection from "@/app/components/ProjectSection";
 import IslandDash from "@/app/components/IslandDash";
 import { useObserver } from "@/app/utils/useObserver";
 const Home = () => {
@@ -13,8 +14,8 @@ const Home = () => {
 
       <div className="m-auto mt-[15vh] w-[80vw] text-primaryMedium">
         <AboutSection />
+        <ProjectSection />
       </div>
-      <div className="h-[100vh]"></div>
     </>
   );
 };
