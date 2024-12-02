@@ -2,8 +2,8 @@ import ProjectCard from "@/app/components/ProjectCard";
 import { data } from "@/app/utils/projectData";
 const ProjectSection = () => {
   return (
-    <>
-      <h1 className="mb-20 mt-[50vh] static">Projects</h1>
+    <div id="Project">
+      <h1 className="mb-20 mt-[50vh] static font-extrabold">Projects</h1>
       {data.map(({ title, desc, content, tags }) => {
         return (
           <ProjectCard
@@ -15,7 +15,8 @@ const ProjectSection = () => {
           />
         );
       })}
-    </>
+      <div className="mb-[100vw]"></div>
+    </div>
   );
 };
 

@@ -12,7 +12,7 @@ const Home = () => {
       {!isVisible && <IslandDash isVertical={true} ref={dashboardRef} />}
       <IslandDash ref={dashboardRef} />
 
-      <div className="m-auto mt-[15vh] w-[80vw] text-primaryMedium">
+      <div className="m-auto mt-[15vh] w-[90vw] md:w-[80vw] text-primaryMedium">
         <AboutSection />
         <ProjectSection />
       </div>
