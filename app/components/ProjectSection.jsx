@@ -15,7 +15,6 @@ const ProjectSection = () => {
           />
         );
       })}
-      <div className="mb-[100vw]"></div>
     </div>
   );
 };

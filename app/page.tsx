@@ -2,6 +2,7 @@
 import AboutSection from "@/app/components/AboutSection";
 import ProjectSection from "@/app/components/ProjectSection";
 import IslandDash from "@/app/components/IslandDash";
+import TechSection from "@/app/components/TechSection";
 import { useObserver } from "@/app/utils/useObserver";
 const Home = () => {
   const [dashboardRef, isVisible] = useObserver();
@@ -15,6 +16,7 @@ const Home = () => {
       <div className="m-auto mt-[15vh] w-[90vw] md:w-[80vw] text-primaryMedium">
         <AboutSection />
         <ProjectSection />
+        <TechSection />
       </div>
     </>
   );
