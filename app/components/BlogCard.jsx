@@ -5,7 +5,7 @@ const BlogCard = ({ id, title, read, date, desc }) => {
   return (
     <Link
       href={`/Blog/${id}`}
-      className="block mt-10 h-fit pb-10 mb-10  rounded-[25px] border border-primaryDark"
+      className="block mt-10 h-fit pb-10 mb-10  rounded-[25px] border border-background hover:border-primaryMedium"
     >
       <h1 className="pt-[6rem] ml-10 mb-7 tracking-tighter text-5xl">
         {title}
