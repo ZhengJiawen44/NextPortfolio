@@ -1,13 +1,29 @@
-"use client";
-import BlogSection from "@/app/components/BlogSection";
+import BlogPost from "@/app/components/BlogPost";
+import { blogData } from "@/app/utils/blogData";
 
-const Blog = () => {
+interface BlogData {
+  id: string;
+  title: string;
+  read: string;
+  date: string;
+  content: string;
+}
+
+const Blog = ({ params }: { params: { id: string } }) => {
+  const blog = blogData.find((blog: BlogData) => blog.id === params.id);
+
+  if (!blog) {
+    return <div>Blog post not found</div>;
+  }
+
   return (
-    <>
-      <div className="m-auto mt-[15vh] w-[90vw] md:w-[80vw] text-primaryMedium">
-        <BlogSection displayAll />
-      </div>
-    </>
+    <BlogPost
+      id={blog.id}
+      title={blog.title}
+      read={blog.read}
+      date={blog.date}
+      content={blog.content}
+    />
   );
 };
 

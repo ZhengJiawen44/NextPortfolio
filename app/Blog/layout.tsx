@@ -4,7 +4,9 @@ export default function Layout({ children }) {
   return (
     <>
       <IslandDash />
-      <main>{children}</main>
+      <div className="m-auto mt-[15vh] w-[90vw] md:w-[80vw] text-primaryMedium">
+        <main>{children}</main>
+      </div>
     </>
   );
 }
