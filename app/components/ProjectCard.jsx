@@ -21,8 +21,10 @@ const ProjectCard = ({ title, desc, content, tags }) => {
         className={clsx(styles.cardContainer, showDetails && styles.expand2)}
       >
         <div className={styles.image}></div>
-        <div className="w-[90%] hover:cursor-pointer">
-          <h2 className="font-[600] text-[3rem] mb-1 ">{title}</h2>
+        <div className="w-[100%]  hover:cursor-pointer ">
+          <h2 className="font-[600] text-[2rem] md:text-[3rem] mb-2 ">
+            {title}
+          </h2>
           <p className="text-[1.5rem] text-primaryDark">{desc}</p>
 
           <div className={styles.tagContainer}>

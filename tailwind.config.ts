@@ -8,6 +8,10 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        xlg: "1600px",
+        badgeBR: "1020px",
+      },
       colors: {
         background: "var(--background)", // Global background color
         foreground: "var(--foreground)", // Global foreground color
