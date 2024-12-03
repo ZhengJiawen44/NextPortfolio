@@ -1,5 +1,4 @@
 "use client";
-
 import BlogSection from "@/app/components/BlogSection";
 
 const Blog = () => {

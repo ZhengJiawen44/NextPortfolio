@@ -19,7 +19,7 @@ const Home = () => {
         <AboutSection />
         <ProjectSection />
         <TechSection />
-        <BlogSection />
+        <BlogSection displayAll={false} />
         <ContactSection />
       </div>
     </>

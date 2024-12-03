@@ -2,13 +2,13 @@ import React from "react";
 import styles from "@/app/ui/island.module.css";
 
 const DashItems = ({ icon, label }) => {
+  function scrollToSection(e) {
+    e.preventDefault();
+    window.location.replace(`/#${label.split(" ")[0]}`);
+  }
+
   return (
-    <button
-      onClick={(e) => {
-        e.preventDefault();
-        window.location.replace(`/#${label.split(" ")[0]}`);
-      }}
-    >
+    <button onClick={scrollToSection}>
       <div className={styles.dashItemContainer}>
         {icon}
         <p className={styles.labelContainer}>{label}</p>

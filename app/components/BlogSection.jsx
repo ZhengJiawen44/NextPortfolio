@@ -3,7 +3,14 @@ import { TbSearch } from "react-icons/tb";
 import BlogCard from "@/app/components/BlogCard";
 import { blogData } from "@/app/utils/blogData";
 import Link from "next/link";
-const BlogSection = () => {
+
+const BlogSection = ({ displayAll }) => {
+  let data = [];
+  if (displayAll || blogData.length <= 2) {
+    data = blogData;
+  } else {
+    data = blogData.slice(0, 2);
+  }
   return (
     <div id="Blogs">
       <div className="mb-[8rem] flex items-center justify-between ]">
@@ -22,22 +29,26 @@ const BlogSection = () => {
           </button>
         </div>
       </div>
-      {blogData.map(({ title, read, date, desc }) => {
+
+      {data.map(({ id, title, read, date, content }) => {
         return (
           <BlogCard
-            key={title}
+            key={id}
+            id={id}
             title={title}
             read={read}
             date={date}
-            desc={desc}
+            content={content}
           />
         );
       })}
+
       <Link
-        href="/Blog"
+        href={displayAll ? "/#Blogs" : "/Blog"}
+        scroll={false}
         className="block w-fit m-auto text-[1.4rem] mb-[25rem]"
       >
-        Read more
+        {displayAll ? "Back Home" : "Read more"}
       </Link>
     </div>
   );
