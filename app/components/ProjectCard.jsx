@@ -25,9 +25,9 @@ const ProjectCard = ({ title, desc, content, tags }) => {
           <h2 className="font-[600] text-[2rem] md:text-[3rem] mb-2 ">
             {title}
           </h2>
-          <p className="text-[1.5rem] text-primaryDark">{desc}</p>
+          <p className="md:text-[1.5rem] text-primaryDark">{desc}</p>
 
-          <div className={styles.tagContainer}>
+          <div className="mt-5 flex gap-2 text-[1rem]">
             {showDetails
               ? tags.map(({ tag, link }) => (
                   <a

@@ -52,10 +52,6 @@
   margin-right: 2rem;
 }
 
-.tagContainer {
-  margin-top: 3rem;
-  display: flex;
-}
 .tag {
   box-shadow: var(--shadow-inset);
   display: flex;
@@ -71,10 +67,8 @@
   }
   background-color: var(--background);
   padding: 0.7rem 1.2rem 0.7rem 1.2rem;
-  margin-right: 1.4rem;
   border-radius: 22px;
   font-family: "Space Mono", monospace;
-  font-size: var(--text-small);
 }
 
 .tag .logo {
