@@ -7,7 +7,7 @@ const BlogCard = ({ id, title, read, date, desc }) => {
       href={`/Blog/${id}`}
       className="block h-fit  mb-10 pb-7 rounded-[25px] border border-background hover:border-primaryMedium"
     >
-      <h1 className="pt-[5rem] md:pt-[6rem] ml-5 md:ml-10 mb-7 tracking-tighter text-2xl sm:text-4xl md:text-5xl">
+      <h1 className=" pt-[2rem] md:pt-[2rem] ml-5 md:ml-10 mb-7 tracking-tighter text-2xl sm:text-4xl md:text-5xl">
         {title}
       </h1>
       <div className="flex ml-5 md:ml-10">

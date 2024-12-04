@@ -13,8 +13,8 @@ const BlogSection = ({ displayAll }) => {
   }
   return (
     <div id="Blogs">
-      <div className="mb-[2rem] md:mb-[8rem] md:flex items-center justify-between">
-        <h1 className="text-[2.5rem] md:text-[3.5rem] font-extrabold ">
+      <div className="mb-[2rem] md:mb-[4rem] md:flex items-center justify-between">
+        <h1 className="mb-[5rem] md:mb-0 text-[2.5rem] md:text-[3.5rem] font-extrabold ">
           Blogs
         </h1>
         <div
@@ -50,7 +50,7 @@ const BlogSection = ({ displayAll }) => {
       <Link
         href={displayAll ? "/#Blogs" : "/Blog"}
         scroll={false}
-        className="block w-fit m-auto text-[1.4rem] mb-[25rem]"
+        className="block w-fit m-auto text-[1.4rem]"
       >
         {displayAll ? "Back Home" : "Read more"}
       </Link>

@@ -15,7 +15,7 @@ const Home = () => {
       {!isVisible && <IslandDash isVertical={true} ref={dashboardRef} />}
       <IslandDash ref={dashboardRef} />
 
-      <div className="m-auto mt-[15vh] w-[90%] lg:w-[90%] xl:w-[80%] text-primaryMedium">
+      <div className="flex flex-col gap-[10rem] m-auto mt-[15vh] w-[90%] lg:w-[90%] xl:w-[80%] text-primaryMedium">
         <AboutSection />
         <ProjectSection />
         <TechSection />

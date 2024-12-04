@@ -3,7 +3,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className=" w-fit m-auto text-primaryMedium ">
+    <footer className=" mt-[10rem] w-fit m-auto text-primaryMedium ">
       <div className="flex justify-between mb-10">
         <Link href="/">terms of use</Link>
         <Link href="/">privacy policy</Link>

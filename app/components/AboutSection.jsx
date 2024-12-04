@@ -3,7 +3,7 @@ import styles from "@/app/ui/about.module.css";
 import Socials from "./Socials";
 const About = () => {
   return (
-    <div className="mb-21" id="Home">
+    <div id="Home">
       <h1 className="mb-0.5 text-[2.5rem] md:text-[4rem] font-extrabold">
         Full Stack developer
       </h1>
