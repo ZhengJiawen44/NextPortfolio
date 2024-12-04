@@ -94,7 +94,7 @@
     padding: 2rem 2rem 0 2rem;
   }
   .content {
-    font-size: var(--text-medium);
+    font-size: 1.3rem;
     padding: 3rem 2rem 2rem 2rem;
   }
 }

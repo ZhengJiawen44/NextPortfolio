@@ -13,11 +13,15 @@ const BlogSection = ({ displayAll }) => {
   }
   return (
     <div id="Blogs">
-      <div className="mb-[8rem] flex items-center justify-between ]">
-        <h1 className="font-extrabold">Blogs</h1>
+      <div className="mb-[2rem] md:mb-[8rem] md:flex items-center justify-between">
+        <h1 className="text-[2.5rem] md:text-[3.5rem] font-extrabold ">
+          Blogs
+        </h1>
         <div
           className=" flex items-center justify-between bg-foreground
-         rounded-[2rem] shadow-inset w-[30rem] h-12"
+         rounded-[2rem] shadow-inset
+         mt-10 md:mt-0 
+         md:w-[50%] lg:w-[40%] h-12"
         >
           <input
             type="text"

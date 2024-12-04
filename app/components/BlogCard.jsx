@@ -5,17 +5,19 @@ const BlogCard = ({ id, title, read, date, desc }) => {
   return (
     <Link
       href={`/Blog/${id}`}
-      className="block mt-10 h-fit pb-10 mb-10  rounded-[25px] border border-background hover:border-primaryMedium"
+      className="block h-fit  mb-10 pb-7 rounded-[25px] border border-background hover:border-primaryMedium"
     >
-      <h1 className="pt-[6rem] ml-10 mb-7 tracking-tighter text-5xl">
+      <h1 className="pt-[5rem] md:pt-[6rem] ml-5 md:ml-10 mb-7 tracking-tighter text-2xl sm:text-4xl md:text-5xl">
         {title}
       </h1>
-      <div className="flex pl-10">
-        <p className="m-4">{read} min read</p>
-        <p className="m-4">{date}</p>
+      <div className="flex ml-5 md:ml-10">
+        <p className="mr-6">{read} min read</p>
+        <p className="">{date}</p>
       </div>
 
-      <p className="m-10 text-medium">{desc}</p>
+      <p className="mt-6 text-[1rem] md:text-[1.5rem] ml-5 mr-5 md:ml-10 ">
+        {desc}
+      </p>
     </Link>
   );
 };
