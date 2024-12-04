@@ -5,17 +5,17 @@ const BlogPost = ({ id, title, read, date, content }) => {
     <>
       <div
         href={`/Blog/${id}`}
-        className="block mt-10 h-fit pb-10 mb-10  rounded-[25px] "
+        className="pt-[6rem] mt-10 h-fit pb-10 mb-10 rounded-[25px]"
       >
-        <h1 className="pt-[6rem] ml-10 mb-7 tracking-tighter text-5xl">
+        <h1 className="mb-10 tracking-tighter text-2xl sm:text-4xl md:text-5xl">
           {title}
         </h1>
-        <div className="flex pl-10">
-          <p className="m-4">{read} min read</p>
-          <p className="m-4">{date}</p>
+        <div className="flex  mb-[5rem]">
+          <p className="mr-4">{read} min read</p>
+          <p>{date}</p>
         </div>
 
-        <p className="m-10 text-medium">{content}</p>
+        <p className=" text-[1.2rem] md:text-medium">{content}</p>
       </div>
     </>
   );
