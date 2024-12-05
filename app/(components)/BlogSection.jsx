@@ -1,5 +1,5 @@
 import React from "react";
-import { TbSearch } from "react-icons/tb";
+import { TbSearch, TbPlus } from "react-icons/tb";
 import BlogCard from "@/app/(components)/BlogCard";
 import { blogData } from "@/app/utils/blogData";
 import Link from "next/link";
@@ -14,11 +14,23 @@ const BlogSection = ({ displayAll }) => {
   return (
     <div id="Blogs">
       <div className="mb-[2rem] md:mb-[4rem] md:flex items-center justify-between">
-        <h1 className="mb-[5rem] md:mb-0 text-[2.5rem] md:text-[3.5rem] font-extrabold ">
-          Blogs
-        </h1>
+        <div className="flex items-baseline gap-6">
+          <h1 className="mb-[5rem] md:mb-0 text-[2.5rem] md:text-[3.5rem] font-extrabold ">
+            Blogs
+          </h1>
+          {displayAll && (
+            <Link
+              className="bg-foreground w-fit h-fit px-4 py-2  flex items-center gap-1 rounded-[20px] hover:text-primaryLight"
+              href="/Blog/new"
+            >
+              <TbPlus />
+              <p>create</p>
+            </Link>
+          )}
+        </div>
+
         <div
-          className=" flex items-center justify-between bg-foreground
+          className="flex items-center justify-between bg-foreground
          rounded-[2rem] shadow-inset
          mt-10 md:mt-0 
          md:w-[50%] lg:w-[40%] h-12 "
