@@ -40,6 +40,20 @@ export default {
       transitionDuration: {
         DEFAULT: "var(--transition)",
       },
+      keyframes: {
+        slide: {
+          from: { left: "100%" },
+          to: { left: "-3rem" },
+        },
+        slideR: {
+          from: { left: "-3rem" },
+          to: { left: "100%" },
+        },
+      },
+      animation: {
+        slide: "slide 7s linear infinite",
+        slideReverse: "slideR 15s linear infinite",
+      },
     },
   },
   plugins: [],

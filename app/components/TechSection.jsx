@@ -1,6 +1,9 @@
 import React from "react";
 import { techData } from "@/app/utils/techData";
+import { techWord } from "@/app/utils/techWord";
+
 import TechCard from "@/app/components/TechCard";
+
 const TechSection = () => {
   return (
     <div>
@@ -11,17 +14,50 @@ const TechSection = () => {
         Tech I use
       </h1>
 
-      <div className=" grid grid-cols-3 gap-2 md:gap-3 lg:gap-5">
-        {techData.map(({ logo, title, description }) => {
-          return (
-            <TechCard
-              key={title}
-              logo={logo}
-              title={title}
-              description={description}
-            />
-          );
-        })}
+      <div className="relative h-[5rem] overflow-hidden">
+        <div className="flex relative">
+          {techWord.map(({ logo }, index) => {
+            return (
+              <TechCard
+                key={logo}
+                logo={logo}
+                title={logo}
+                delay={(15000 / 6) * index - 1}
+                reverse
+              />
+            );
+          })}
+        </div>
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background z-10 pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(20, 20, 20) 0%, rgba(20, 20, 20, 0) 10%, rgba(20, 20, 20, 0) 80%, rgba(20, 20, 20, 1) 100%)",
+          }}
+        ></div>
+      </div>
+
+      <div className="relative h-[5rem] overflow-hidden">
+        <div className="flex relative">
+          {techData.map(({ logo, title, description }, index) => {
+            return (
+              <TechCard
+                key={title}
+                logo={logo}
+                title={title}
+                description={description}
+                delay={(7000 / 6) * index - 1}
+              />
+            );
+          })}
+        </div>
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-background z-10 pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(20, 20, 20) 0%, rgba(20, 20, 20, 0) 10%, rgba(20, 20, 20, 0) 80%, rgba(20, 20, 20, 1) 100%)",
+          }}
+        ></div>
       </div>
     </div>
   );

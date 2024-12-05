@@ -117,5 +117,6 @@
     backdrop-filter: blur(5px);
     position: sticky;
     top: 1rem;
+    z-index: 20;
   }
 }

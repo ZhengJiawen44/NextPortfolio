@@ -5,7 +5,7 @@ const BlogCard = ({ id, title, read, date, desc }) => {
   return (
     <Link
       href={`/Blog/${id}`}
-      className=" relative block h-fit  mb-10 pb-7 rounded-[25px] border border-background hover:border-primaryMedium overflow-hidden"
+      className=" relative block h-fit  mb-10 pb-9 rounded-[20px] border-2 border-background hover:border-primaryMedium  overflow-hidden"
     >
       <div className="relative">
         <h1 className=" pt-[2rem] md:pt-[2rem] w-[95%] m-auto  mb-7 tracking-tighter text-2xl sm:text-4xl md:text-5xl">
