@@ -9,6 +9,7 @@ const FormRow = ({ type, name }) => {
       <input
         type={type}
         id={name}
+        name={name}
         className=" bg-foreground rounded-[1rem] md:rounded-[1.5rem] shadow-inset 
   h-9 md:h-16 outline-none pl-5 md:text-medium "
       ></input>
