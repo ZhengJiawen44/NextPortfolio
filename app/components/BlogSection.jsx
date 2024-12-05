@@ -48,7 +48,7 @@ const BlogSection = ({ displayAll }) => {
       })}
 
       <Link
-        href={displayAll ? "/#Blogs" : "/Blog"}
+        href={displayAll ? "/" + "#Blogs  " : "/Blog"}
         scroll={false}
         className="block w-fit m-auto md:text-[1.4rem] hover:text-primaryLight hover:translate-y-1"
       >
