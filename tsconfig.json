@@ -28,7 +28,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/Blog/loading.js",
-    "app/components/Shimmer.js"
+    "app/(components)/Shimmer.js"
   ],
   "exclude": ["node_modules"]
 }

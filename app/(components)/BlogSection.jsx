@@ -1,6 +1,6 @@
 import React from "react";
 import { TbSearch } from "react-icons/tb";
-import BlogCard from "@/app/components/BlogCard";
+import BlogCard from "@/app/(components)/BlogCard";
 import { blogData } from "@/app/utils/blogData";
 import Link from "next/link";
 

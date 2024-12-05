@@ -1,5 +1,5 @@
 "use client";
-import TranslateDash from "@/app/components/TranslateDash";
+import TranslateDash from "@/app/(components)/TranslateDash";
 import { TbHome } from "react-icons/tb";
 import { TbBriefcase } from "react-icons/tb";
 import { TbTool } from "react-icons/tb";

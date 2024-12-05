@@ -1,5 +1,5 @@
-import "@/app/components/Loading";
-import BlogSection from "@/app/components/BlogSection";
+import "@/app/(components)/Loading";
+import BlogSection from "@/app/(components)/BlogSection";
 
 const Blog = () => {
   return (

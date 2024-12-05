@@ -1,4 +1,4 @@
-import BlogPost from "@/app/components/BlogPost";
+import BlogPost from "@/app/(components)/BlogPost";
 import { blogData } from "@/app/utils/blogData";
 
 interface BlogData {

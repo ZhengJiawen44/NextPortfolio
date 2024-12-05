@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "next/form";
-import FormRow from "@/app/components/FormRow";
-import TextArea from "@/app/components/TextArea";
+import FormRow from "@/app/(components)/FormRow";
+import TextArea from "@/app/(components)/TextArea";
 const ContactSection = () => {
   return (
     <div>
