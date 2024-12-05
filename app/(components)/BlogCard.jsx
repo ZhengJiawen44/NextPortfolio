@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const BlogCard = ({ id, title, read, date, desc }) => {
+const BlogCard = ({ id, title, read, date, content }) => {
   return (
     <Link
       href={`/Blog/${id}`}
@@ -17,7 +17,7 @@ const BlogCard = ({ id, title, read, date, desc }) => {
         </div>
 
         <p className=" h-[4.4rem] lg:h-[6rem] overflow-hidden mt-6 text-[1rem] md:text-[1.5rem] w-[95%] m-auto  ">
-          {desc}
+          {content}
         </p>
       </div>
 

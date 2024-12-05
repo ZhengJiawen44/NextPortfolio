@@ -9,8 +9,9 @@ interface BlogData {
   content: string;
 }
 
-const Blog = ({ params }: { params: { id: string } }) => {
-  const blog = blogData.find((blog: BlogData) => blog.id === params.id);
+const Blog = async ({ params }: { params: { id: string } }) => {
+  const { id } = await params;
+  const blog = blogData.find((blog: BlogData) => blog.id === id);
 
   if (!blog) {
     return <div>Blog post not found</div>;

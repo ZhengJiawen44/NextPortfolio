@@ -34,7 +34,7 @@ const BlogSection = ({ displayAll }) => {
         </div>
       </div>
 
-      {data.map(({ id, title, read, date, desc }) => {
+      {data.map(({ id, title, read, date, content }) => {
         return (
           <BlogCard
             key={id}
@@ -42,7 +42,7 @@ const BlogSection = ({ displayAll }) => {
             title={title}
             read={read}
             date={date}
-            desc={desc}
+            content={content}
           />
         );
       })}
