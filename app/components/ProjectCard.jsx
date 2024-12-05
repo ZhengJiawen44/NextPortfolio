@@ -27,7 +27,7 @@ const ProjectCard = ({ title, desc, content, tags }) => {
           </h2>
           <p className="md:text-[1.5rem] text-primaryDark">{desc}</p>
 
-          <div className="mt-5 flex gap-2 text-[1rem]">
+          <div className="mt-5 flex flex-wrap gap-2 text-[1rem]">
             {showDetails
               ? tags.map(({ tag, link }) => (
                   <a

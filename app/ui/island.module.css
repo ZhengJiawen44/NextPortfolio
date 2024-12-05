@@ -103,3 +103,19 @@
     display: none;
   }
 }
+@media only screen and (max-width: 1250px) {
+  .translate {
+    display: none;
+  }
+  .dashboard {
+    border-style: solid;
+    border-top: 0;
+    border-right: 0;
+    border-color: rgb(52, 52, 52, 90%);
+    border-width: 0.1rem;
+    background-color: rgb(32, 32, 32, 50%);
+    backdrop-filter: blur(5px);
+    position: sticky;
+    top: 1rem;
+  }
+}

@@ -21,15 +21,15 @@ const BlogSection = ({ displayAll }) => {
           className=" flex items-center justify-between bg-foreground
          rounded-[2rem] shadow-inset
          mt-10 md:mt-0 
-         md:w-[50%] lg:w-[40%] h-12"
+         md:w-[50%] lg:w-[40%] h-12 "
         >
           <input
             type="text"
-            className="w-[80%] h-[100%] bg-transparent pl-7 text-medium
+            className=" w-[80%] h-[100%] bg-transparent pl-7 text-medium
           outline-none"
           ></input>
-          <button className="border w-[20%] h-[100%] flex items-center justify-center">
-            <TbSearch className="w-[50%] h-[50%] hover:scale-125 hover:text-primaryLight" />
+          <button className="w-[20%] h-[100%] flex items-center justify-center">
+            <TbSearch className="w-[50%] h-[50%] ml-[40%]  hover:scale-125 hover:text-primaryLight" />
           </button>
         </div>
       </div>
@@ -50,7 +50,7 @@ const BlogSection = ({ displayAll }) => {
       <Link
         href={displayAll ? "/#Blogs" : "/Blog"}
         scroll={false}
-        className="block w-fit m-auto text-[1.4rem]"
+        className="block w-fit m-auto md:text-[1.4rem] hover:text-primaryLight hover:translate-y-1"
       >
         {displayAll ? "Back Home" : "Read more"}
       </Link>

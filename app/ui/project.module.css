@@ -94,7 +94,10 @@
     padding: 2rem 2rem 0 2rem;
   }
   .content {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     padding: 3rem 2rem 2rem 2rem;
+  }
+  .tag {
+    font-size: small;
   }
 }

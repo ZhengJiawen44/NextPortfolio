@@ -23,7 +23,7 @@ html {
 
   /* background */
   --background: #141414;
-  --foreground: #202020;
+  --foreground: rgb(32, 32, 32);
   --foreground-dark: #1d1d1d;
 
   /* variables */

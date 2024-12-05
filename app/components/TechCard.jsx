@@ -3,7 +3,7 @@ import Image from "next/image";
 const TechCard = ({ logo, title, description }) => {
   return (
     <div
-      className="hover:animate-pulse flex items-center aspect-[3.5]  
+      className=" hover:animate-pulse flex items-center aspect-[3.5]  
     bg-gradient-to-bl from-foreground to-background rounded-[2rem]"
     >
       <Image
