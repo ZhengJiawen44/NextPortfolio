@@ -1,14 +1,15 @@
-import blogModel from "@/app/(models)/BlogModel";
-import { NextResponse, NextRequest } from "next/server";
+import { Blog } from "@/app/(models)/BlogModel";
+import { NextResponse } from "next/server";
 import { validate } from "@/app/utils/blogValidation";
+import mongoose from "mongoose";
 
-export async function POST(NextRequest) {
+export async function POST(req) {
   try {
-    const body = await NextRequest.json();
+    const body = await req.json();
 
     const parsedData = validate(body);
     if (parsedData === true) {
-      const blog = await blogModel.create(body);
+      const blog = await Blog.create(body);
       if (blog) {
         return NextResponse.json(
           { message: "created successfully" },
@@ -26,4 +27,19 @@ export async function POST(NextRequest) {
     console.log(error.message);
     return NextResponse.json({ message: error.message }, { status: 500 });
   }
+}
+
+export async function GET() {
+  try {
+    const blogs = await Blog.find({});
+    return NextResponse.json({ blogs }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ message: error.message }, { status: 500 });
+  }
+}
+
+export async function DELETE() {
+  const blogs = await Blog.deleteMany();
+
+  return NextResponse.json({ blogs: blogs });
 }

@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import blogValidation from "@/app/utils/blogValidation";
 import { useState } from "react";
@@ -20,7 +21,6 @@ const FormRow: React.FC<FormRowProps> = ({ type, name }) => {
       setErrors(result.error.formErrors.formErrors[0]);
     }
   };
-  console.log(errors);
 
   return (
     <div className="flex flex-col">
@@ -36,7 +36,7 @@ const FormRow: React.FC<FormRowProps> = ({ type, name }) => {
   h-9 md:h-16 outline-none pl-5 md:text-medium "
         required
       ></input>
-      <span className="m-3">{errors}</span>
+      <span className="m-3 text-[0.7rem] md:text-[0.9rem]">{errors}</span>
     </div>
   );
 };

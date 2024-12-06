@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import blogValidation from "@/app/utils/blogValidation";
 import { useState } from "react";
@@ -15,7 +16,6 @@ const TextArea = ({ name }) => {
       setErrors(result.error.formErrors.formErrors[0]);
     }
   };
-  console.log(errors);
 
   return (
     <div className="flex flex-col col-span-2">
