@@ -4,9 +4,9 @@ import IslandDash from "@/app/(components)/IslandDash";
 import TechSection from "@/app/(components)/TechSection";
 import BlogSection from "@/app/(components)/BlogSection";
 import ContactSection from "@/app/(components)/ContactSection";
-import { useObserver } from "@/app/utils/useObserver";
+// import { useObserver } from "@/app/utils/useObserver";
 
-const Home = () => {
+const Home = async () => {
   // const [dashboardRef, isVisible] = useObserver();
   //vite hot refresh breaks this, the Observer stops updating isVisible
 

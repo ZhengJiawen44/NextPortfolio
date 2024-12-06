@@ -26,7 +26,7 @@ const BlogForm = () => {
       const { message } = await res.json();
       if (res.ok) {
         router.push("/Blog");
-        toast(message, { className: "bg-foreground" });
+        toast.success(message);
       } else {
         toast.error(message);
       }
