@@ -1,21 +1,43 @@
+"use client";
 import React, { FormEvent } from "react";
 import FormRow from "./FormRow";
 import TextArea from "./TextArea";
-const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
-  event.preventDefault();
-  const formData = new FormData(event.currentTarget);
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+import { validate } from "@/app/utils/blogValidation";
 
-  const data = Object.fromEntries(formData.entries());
-
-  const res = await fetch("/api/Blog", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  const { message } = await res.json();
-  console.log(message);
-};
 const BlogForm = () => {
+  const router = useRouter();
+
+  const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    const zodResult = validate(data);
+
+    if (zodResult === true) {
+      const res = await fetch("/api/Blog", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const { message } = await res.json();
+      if (res.ok) {
+        router.push("/Blog");
+        toast(message, { className: "bg-foreground" });
+      } else {
+        toast.error(message);
+      }
+    } else {
+      zodResult.forEach((error) => {
+        toast.error(error);
+      });
+      return;
+    }
+  };
+
   return (
     <form onSubmit={handleFormSubmit}>
       <div>

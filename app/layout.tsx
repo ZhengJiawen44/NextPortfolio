@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "@/app/ui/global.css";
 import { space_grotesk, space_mono } from "@/app/ui/fonts";
 import Footer from "@/app/(components)/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
   title: "Zheng Jiawen",
@@ -18,6 +20,7 @@ export default function RootLayout({
       <body
         className={`${space_grotesk.className} ${space_mono.className} antialiased`}
       >
+        <ToastContainer theme="dark" />
         {children}
         <Footer />
       </body>

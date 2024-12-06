@@ -1,10 +1,15 @@
 import React from "react";
 import blogValidation from "@/app/utils/blogValidation";
 import { useState } from "react";
-const TextArea = ({ name }) => {
+interface FormRowProps {
+  type: string;
+  name: keyof typeof blogValidation.shape;
+}
+
+const FormRow: React.FC<FormRowProps> = ({ type, name }) => {
   const [errors, setErrors] = useState("");
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const { name, value } = event.target;
 
@@ -18,20 +23,22 @@ const TextArea = ({ name }) => {
   console.log(errors);
 
   return (
-    <div className="flex flex-col col-span-2">
+    <div className="flex flex-col">
       <label htmlFor={name} className="md:text-[1.5rem] mb-3">
         {name}
       </label>
-      <textarea
+      <input
         onChange={(event) => handleChange(event)}
+        type={type}
         id={name}
         name={name}
         className=" bg-foreground rounded-[1rem] md:rounded-[1.5rem] shadow-inset 
-   h-[10rem] outline-none pl-5 md:text-medium mb-10 pt-4 min-h-[6rem]"
-      ></textarea>
-      <span className="mb-[3rem]">{errors}</span>
+  h-9 md:h-16 outline-none pl-5 md:text-medium "
+        required
+      ></input>
+      <span className="m-3">{errors}</span>
     </div>
   );
 };
 
-export default TextArea;
+export default FormRow;
