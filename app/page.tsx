@@ -1,10 +1,10 @@
-import AboutSection from "@/app/(components)/AboutSection";
-import ProjectSection from "@/app/(components)/ProjectSection";
-import IslandDash from "@/app/(components)/IslandDash";
-import TechSection from "@/app/(components)/TechSection";
-import BlogSection from "@/app/(components)/BlogSection";
-import ContactSection from "@/app/(components)/ContactSection";
-// import { useObserver } from "@/app/utils/useObserver";
+import AboutSection from "@/components/AboutSection";
+import ProjectSection from "@/components/ProjectSection";
+import IslandDash from "@/components/IslandDash";
+import TechSection from "@/components/TechSection";
+import BlogSection from "@/components/BlogSection";
+import ContactSection from "@/components/ContactSection";
+// import { useObserver } from "@/tilsuseObserver";
 
 const Home = async () => {
   // const [dashboardRef, isVisible] = useObserver();

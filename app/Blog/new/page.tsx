@@ -1,5 +1,5 @@
 import React from "react";
-import BlogForm from "@/app/(components)/BlogForm";
+import BlogForm from "@/components/BlogForm";
 const page = () => {
   return (
     <div>

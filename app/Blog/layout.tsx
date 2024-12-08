@@ -1,4 +1,4 @@
-import IslandDash from "../(components)/IslandDash";
+import IslandDash from "@/components/IslandDash";
 
 export default function Layout({ children }) {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import { techData } from "@/app/utils/techData";
-import { techWord } from "@/app/utils/techWord";
+import { techData } from "@/app/lib/techData";
+import { techWord } from "@/app/lib/techWord";
 
 import TechCard from "@/app/(components)/TechCard";
 

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import blogValidation from "@/app/utils/blogValidation";
+import blogValidation from "@/lib/blogValidation";
 import { useState } from "react";
 const TextArea = ({ name }) => {
   const [errors, setErrors] = useState("");

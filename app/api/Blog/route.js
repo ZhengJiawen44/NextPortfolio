@@ -1,6 +1,6 @@
 import { Blog } from "@/app/(models)/BlogModel";
 import { NextResponse } from "next/server";
-import { validate } from "@/app/utils/blogValidation";
+import { validate } from "@/lib/blogValidation";
 
 export async function POST(req) {
   try {

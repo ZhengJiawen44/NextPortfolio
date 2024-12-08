@@ -1,4 +1,4 @@
-import BlogPost from "@/app/(components)/BlogPost";
+import BlogPost from "@/components/BlogPost";
 
 const Blog = async ({ params }: { params: { id: string } }) => {
   const { id } = await params;

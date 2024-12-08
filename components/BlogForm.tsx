@@ -4,7 +4,7 @@ import FormRow from "./FormRow";
 import TextArea from "./TextArea";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-import { validate } from "@/app/utils/blogValidation";
+import { validate } from "@/lib/blogValidation";
 
 const BlogForm = () => {
   const router = useRouter();

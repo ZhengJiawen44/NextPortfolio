@@ -1,5 +1,5 @@
 import ProjectCard from "@/app/(components)/ProjectCard";
-import { data } from "@/app/utils/projectData";
+import { data } from "@/app/lib/projectData";
 const ProjectSection = () => {
   return (
     <div id="Project">
