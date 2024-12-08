@@ -98,11 +98,11 @@ p {
     --shadow-inset: inset -5px 5px 6px 0px rgba(0, 0, 0, 0.64);
   }
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 0 0% 7.8%;
     --foreground: 0 0% 98%;
-    --hover-color: 0 0% 0%;
-    --item: 0 0% 90%;
-    --item-foreground: 240 10% 50%;
+    --hover-color: 0 0% 100%;
+    --item: 0 0% 12.9%;
+    --item-foreground: 240 0% 50%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;

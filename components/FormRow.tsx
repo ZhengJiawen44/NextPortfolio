@@ -5,10 +5,16 @@ import { useState } from "react";
 interface FormRowProps {
   type: string;
   name: keyof typeof blogValidation.shape;
+  value: string;
   noValidation: boolean;
 }
 
-const FormRow: React.FC<FormRowProps> = ({ type, name, noValidation }) => {
+const FormRow: React.FC<FormRowProps> = ({
+  type,
+  name,
+  value,
+  noValidation,
+}) => {
   const [errors, setErrors] = useState("");
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -32,6 +38,7 @@ const FormRow: React.FC<FormRowProps> = ({ type, name, noValidation }) => {
         type={type}
         id={name}
         name={name}
+        defaultValue={value}
         className="bg-item rounded-[1rem] md:rounded-[1.5rem] shadow-inset 
   h-9 md:h-16 outline-none pl-5 md:text-medium "
         required

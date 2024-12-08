@@ -2,7 +2,7 @@
 import React from "react";
 import blogValidation from "@/lib/blogValidation";
 import { useState } from "react";
-const TextArea = ({ name, noValidation }) => {
+const TextArea = ({ name, value, noValidation }) => {
   const [errors, setErrors] = useState("");
 
   const handleChange = (event) => {
@@ -26,6 +26,7 @@ const TextArea = ({ name, noValidation }) => {
         onChange={(event) => (noValidation ? () => {} : handleChange(event))}
         id={name}
         name={name}
+        defaultValue={value}
         className=" bg-item rounded-[1rem] md:rounded-[1.5rem] shadow-inset 
    h-[10rem] outline-none pl-5 md:text-medium mb-10 pt-4 min-h-[6rem]"
       ></textarea>
