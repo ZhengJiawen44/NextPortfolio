@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 export default {
+  darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,26 +14,67 @@ export default {
         badgeBR: "1020px",
       },
       colors: {
-        background: "var(--background)", // Global background color
-        foreground: "var(--foreground)", // Global foreground color
-        primaryLight: "var(--primary-light)", // Primary light color
-        primaryMedium: "var(--primary-medium)", // Primary medium color
-        primaryDark: "var(--primary-dark)", // Primary dark color
-        cyan100: "var(--cyan-100)", // Cyan color 100
-        cyan200: "var(--cyan-200)", // Cyan color 200
-        cyan300: "var(--cyan-300)", // Cyan color 300
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primaryLight: "var(--primary-light)",
+        primaryMedium: "var(--primary-medium)",
+        primaryDark: "var(--primary-dark)",
+        cyan100: "var(--cyan-100)",
+        cyan200: "var(--cyan-200)",
+        cyan300: "var(--cyan-300)",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        chart: {
+          "1": "hsl(var(--chart-1))",
+          "2": "hsl(var(--chart-2))",
+          "3": "hsl(var(--chart-3))",
+          "4": "hsl(var(--chart-4))",
+          "5": "hsl(var(--chart-5))",
+        },
       },
       boxShadow: {
-        outset: "var(--shadow-outset)", // Outset shadow
-        inset: "var(--shadow-inset)", // Inset shadow
+        outset: "var(--shadow-outset)",
+        inset: "var(--shadow-inset)",
       },
       fontSize: {
-        small: "var(--text-small)", // Small text size
-        medium: "var(--text-medium)", // Medium text size
-        large: "var(--text-large)", // Large text size
+        small: "var(--text-small)",
+        medium: "var(--text-medium)",
+        large: "var(--text-large)",
       },
       borderRadius: {
         DEFAULT: "var(--border-radius)",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       letterSpacing: {
         DEFAULT: "var(--letter-spacing)",
@@ -42,12 +84,20 @@ export default {
       },
       keyframes: {
         slide: {
-          from: { left: "100%" },
-          to: { left: "-3rem" },
+          from: {
+            left: "100%",
+          },
+          to: {
+            left: "-3rem",
+          },
         },
         slideR: {
-          from: { left: "-3rem" },
-          to: { left: "100%" },
+          from: {
+            left: "-3rem",
+          },
+          to: {
+            left: "100%",
+          },
         },
       },
       animation: {
@@ -56,5 +106,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;
