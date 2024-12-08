@@ -1,8 +1,8 @@
 import React from "react";
-import { techData } from "@/app/lib/techData";
-import { techWord } from "@/app/lib/techWord";
+import { techData } from "@/lib/techData";
+import { techWord } from "@/lib/techWord";
 
-import TechCard from "@/app/(components)/TechCard";
+import TechCard from "@/components/TechCard";
 
 const TechSection = () => {
   return (

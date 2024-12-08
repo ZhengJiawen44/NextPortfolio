@@ -1,12 +1,12 @@
 "use client";
-import TranslateDash from "@/app/(components)/TranslateDash";
+import TranslateDash from "@/components/TranslateDash";
 import { TbHome } from "react-icons/tb";
 import { TbBriefcase } from "react-icons/tb";
 import { TbTool } from "react-icons/tb";
 import { TbNotebook } from "react-icons/tb";
 import { TbMail } from "react-icons/tb";
 import DashItems from "./DashItems";
-import styles from "@/app/ui/island.module.css";
+import styles from "@/components/ui/island.module.css";
 import clsx from "clsx";
 import { forwardRef } from "react";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/app/ui/island.module.css";
+import styles from "@/components/ui/island.module.css";
 import { TbLanguageHiragana } from "react-icons/tb";
 const TranslateDash = () => {
   return (

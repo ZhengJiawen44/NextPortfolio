@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { TbLink } from "react-icons/tb";
 import { TbBrandGithub } from "react-icons/tb";
 import { TbNews } from "react-icons/tb";
-import styles from "@/app/ui/project.module.css";
+import styles from "@/components/ui/project.module.css";
 import clsx from "clsx";
 
 const ProjectCard = ({ title, desc, content, tags }) => {
