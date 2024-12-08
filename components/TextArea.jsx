@@ -2,7 +2,7 @@
 import React from "react";
 import blogValidation from "@/lib/blogValidation";
 import { useState } from "react";
-const TextArea = ({ name }) => {
+const TextArea = ({ name, noValidation }) => {
   const [errors, setErrors] = useState("");
 
   const handleChange = (event) => {
@@ -23,13 +23,13 @@ const TextArea = ({ name }) => {
         {name}
       </label>
       <textarea
-        onChange={(event) => handleChange(event)}
+        onChange={(event) => (noValidation ? () => {} : handleChange(event))}
         id={name}
         name={name}
-        className=" bg-foreground rounded-[1rem] md:rounded-[1.5rem] shadow-inset 
+        className=" bg-item rounded-[1rem] md:rounded-[1.5rem] shadow-inset 
    h-[10rem] outline-none pl-5 md:text-medium mb-10 pt-4 min-h-[6rem]"
       ></textarea>
-      <span className="mb-[3rem]">{errors}</span>
+      <span className="mb-[3rem]">{noValidation ? "" : errors}</span>
     </div>
   );
 };

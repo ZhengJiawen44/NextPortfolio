@@ -13,10 +13,10 @@ const ContactSection = () => {
       </h1>
 
       <Form action="/" className="grid grid-cols-2 gap-[1rem] md:gap-[4rem]">
-        <FormRow type="text" name="name" />
-        <FormRow type="email" name="email" />
+        <FormRow type="text" name="name" noValidation={true} />
+        <FormRow type="email" name="email" noValidation={true} />
         <div />
-        <TextArea name="message" />
+        <TextArea name="message" noValidation={true} />
         <button
           className="bg-cyan100 text-black md:text-medium col-span-2
         rounded-xl w-[100%] h-[2rem] md:h-[3rem]"

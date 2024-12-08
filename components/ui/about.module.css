@@ -6,7 +6,7 @@
 .greenPopup {
   width: 350px;
   height: 185px;
-  border-radius: theme("borderRadius.DEFAULT");
+  border-radius: 25px;
   background-color: theme("colors.cyan200");
 }
 

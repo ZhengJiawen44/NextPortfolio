@@ -15,7 +15,7 @@ const Home = async () => {
       {/* {!isVisible && <IslandDash isVertical={true} ref={dashboardRef} />}
       <IslandDash ref={dashboardRef} /> */}
       <IslandDash />
-      <div className="flex flex-col gap-[10rem] m-auto mt-[15vh] w-[90%] lg:w-[90%] xl:w-[80%] text-primaryMedium">
+      <div className="flex flex-col gap-[10rem] m-auto mt-[15vh] w-[90%] lg:w-[90%] xl:w-[80%] text-foreground">
         <AboutSection />
         <ProjectSection />
         <TechSection />

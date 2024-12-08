@@ -6,45 +6,8 @@ html {
   scroll-behavior: smooth;
 }
 
-:root {
-  /* fonts */
-  --font-grotesk: "Space Grotesk", sans-serif;
-  --font-mono: "Space Mono", monospace;
-
-  /* text colors */
-  --primary-light: #ffffff;
-  --primary-medium: #aaaaaa;
-  --primary-dark: hsl(0, 0%, 40%);
-
-  /* cyan */
-  --cyan-100: #43a478;
-  --cyan-200: #529979;
-  --cyan-300: #1a3d32;
-
-  /* background */
-  --foreground-dark: #1d1d1d;
-
-  /* variables */
-  --border-radius: 25px;
-  --letter-spacing: 1px;
-  --transition: 0.3s ease-in-out all;
-
-  /* text font size */
-  --text-small: 1.1rem;
-  --text-medium: 1.55rem;
-  --text-large: 2rem;
-
-  /* box shadow */
-  --shadow-outset: -8px 8px 10px 1px rgba(0, 0, 0, 0.4);
-
-  /*shadow-inset */
-  --shadow-inset: inset -5px 5px 6px 0px rgba(0, 0, 0, 0.64);
-}
-* {
+/* * {
   transition: all 0.2s ease;
-}
-body {
-  background-color: var(--background);
 }
 
 button {
@@ -80,14 +43,6 @@ h2 {
 p {
   font-family: var(--font-grotesk), monospace;
 }
-.logo {
-  height: 1.75rem;
-  width: 1.75rem;
-  stroke-width: 1.6;
-}
-.page-end {
-  margin-bottom: 30vh;
-}
 
 .container {
   display: flex;
@@ -95,20 +50,15 @@ p {
   justify-content: center;
   gap: 1rem;
 }
-.projectCard {
-  border-radius: 25px;
-  width: 100%;
-  margin-bottom: 2rem;
+*/
 
-  &:hover {
-    background-color: var(--foreground);
-    cursor: pointer;
-  }
-}
 @layer base {
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
+    --hover-color: 0 0% 0%;
+    --item: 0 0% 90%;
+    --item-foreground: 240 10% 50%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
@@ -132,10 +82,27 @@ p {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    /* fonts */
+    --font-grotesk: "Space Grotesk", sans-serif;
+    --font-mono: "Space Mono", monospace;
+    /* text colors */
+    --primary-light: #ffffff;
+    --primary-medium: #aaaaaa;
+    --primary-dark: hsl(0, 0%, 40%);
+    /* cyan */
+    --cyan-100: #43a478;
+    --cyan-200: #529979;
+    --cyan-300: #1a3d32;
+    --shadow-outset: -8px 8px 10px 1px rgba(0, 0, 0, 0.4);
+    --shadow-inset: inset -5px 5px 6px 0px rgba(0, 0, 0, 0.64);
   }
   .dark {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
+    --hover-color: 0 0% 0%;
+    --item: 0 0% 90%;
+    --item-foreground: 240 10% 50%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
@@ -159,7 +126,13 @@ p {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+  .logo {
+    height: 1.75rem;
+    width: 1.75rem;
+    stroke-width: 1.6;
+  }
 }
+
 @layer base {
   * {
     @apply border-border;

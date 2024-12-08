@@ -5,11 +5,11 @@ import { useState } from "react";
 interface FormRowProps {
   type: string;
   name: keyof typeof blogValidation.shape;
+  noValidation: boolean;
 }
 
-const FormRow: React.FC<FormRowProps> = ({ type, name }) => {
+const FormRow: React.FC<FormRowProps> = ({ type, name, noValidation }) => {
   const [errors, setErrors] = useState("");
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const { name, value } = event.target;
@@ -28,15 +28,17 @@ const FormRow: React.FC<FormRowProps> = ({ type, name }) => {
         {name}
       </label>
       <input
-        onChange={(event) => handleChange(event)}
+        onChange={(event) => (noValidation ? "" : handleChange(event))}
         type={type}
         id={name}
         name={name}
-        className=" bg-foreground rounded-[1rem] md:rounded-[1.5rem] shadow-inset 
+        className="bg-item rounded-[1rem] md:rounded-[1.5rem] shadow-inset 
   h-9 md:h-16 outline-none pl-5 md:text-medium "
         required
       ></input>
-      <span className="m-3 text-[0.7rem] md:text-[0.9rem]">{errors}</span>
+      <span className="m-3 text-[0.7rem] md:text-[0.9rem]">
+        {noValidation ? "" : errors}
+      </span>
     </div>
   );
 };

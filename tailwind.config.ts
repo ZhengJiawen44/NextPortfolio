@@ -16,12 +16,17 @@ export default {
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        hoverColor: "hsl(var(--hover-color))",
         primaryLight: "var(--primary-light)",
         primaryMedium: "var(--primary-medium)",
         primaryDark: "var(--primary-dark)",
         cyan100: "var(--cyan-100)",
         cyan200: "var(--cyan-200)",
         cyan300: "var(--cyan-300)",
+        item: {
+          DEFAULT: "hsl(var(--item))",
+          foreground: "hsl(var(--item-foreground))",
+        },
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

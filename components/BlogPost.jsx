@@ -56,27 +56,27 @@ const BlogPost = ({ id, title, length, date, content }) => {
         href={`/Blog/${id}`}
         className=" pt-[6rem] mt-10 h-fit pb-10 mb-10 rounded-[25px]"
       >
-        <h1 className="mb-10 tracking-tighter text-2xl sm:text-4xl md:text-5xl">
+        <h1 className="text-foreground mb-10 tracking-tighter text-2xl sm:text-4xl md:text-5xl">
           {title}
         </h1>
         <div className="flex  mb-[5rem]">
-          <p className="mr-4">{length} min read</p>
-          <p>{date}</p>
+          <p className="mr-4 text-foreground">{length} min read</p>
+          <p className="text-foreground">{date}</p>
         </div>
 
-        <p className="w-full text-[1.2rem] md:text-medium break-words">
+        <p className=" text-foreground w-full text-[1.2rem] md:text-medium break-words">
           {content}
         </p>
 
         <button
-          className="mr-8 my-8 bg-foreground p-2 px-4 rounded-2xl shadow-inset
-        hover:text-white"
+          className="mr-8 my-8 bg-item p-2 px-4 rounded-2xl shadow-inset
+       text-item-foreground hover:text-foreground"
         >
           edit
         </button>
         <button
-          className="my-8 bg-foreground p-2 px-4 rounded-2xl shadow-inset
-        hover:text-white"
+          className="my-8 bg-item p-2 px-4 rounded-2xl shadow-inset
+        text-item-foreground hover:text-foreground"
           onClick={() => setIsDelete(!isDelete)}
         >
           delete

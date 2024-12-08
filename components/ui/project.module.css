@@ -4,8 +4,8 @@
   &:hover {
     background-image: linear-gradient(
       to left,
-      var(--foreground) 10%,
-      var(--background) 100%
+      hsl(var(--item)) 10%,
+      hsl(var(--background)) 100%
     );
   }
 }
@@ -21,8 +21,8 @@
 .expand {
   background-image: linear-gradient(
     to left,
-    var(--foreground) 10%,
-    var(--background) 100%
+    hsl(var(--item)) 10%,
+    hsl(var(--background)) 100%
   );
   height: fit-content;
   align-items: start;
@@ -59,10 +59,10 @@
   justify-content: center;
   column-gap: 0.7rem;
   width: auto;
-
+  transition: all ease-in-out 0.3s;
   &:hover {
     box-shadow: inset -3px 3px 6px 0px rgba(0, 0, 0, 0.64);
-    color: var(--primary-light);
+    color: hsl(var(--hover-color));
     padding: 0.7rem 1.6rem;
   }
   background-color: var(--background);

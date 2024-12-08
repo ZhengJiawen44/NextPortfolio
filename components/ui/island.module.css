@@ -42,9 +42,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--foreground);
-  color: var(--primary-dark);
-  border-radius: var(--border-radius);
+  background-color: hsl(var(--item));
+  border-radius: 25rem;
   margin: auto;
   margin-top: 30px;
   padding: 0px 30px;
@@ -63,14 +62,14 @@
 .dashItems {
   width: 35px;
   height: 35px;
-  color: var(--primary-dark);
+  color: hsl(var(--item-foreground));
   stroke-width: 1.5;
   transition: transform 185ms ease-in-out;
   padding: 0.2rem;
 }
 
 .dashItems:hover {
-  color: var(--primary-light);
+  color: hsl(var(--hover-color));
   cursor: pointer;
   transform: translateY(-5px) scale(1.1);
 }
@@ -83,7 +82,7 @@
   display: none;
   position: absolute;
   top: 45px;
-  color: var(--primary-light);
+  color: hsl(var(--hover-color));
   font-family: var(--font-grotesk);
 }
 .dashItemContainer {
