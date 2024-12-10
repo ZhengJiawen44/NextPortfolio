@@ -13,8 +13,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/form";
-import { Button } from "@/components/button";
+} from "@/components/ui/form";
+import { Button } from "@/components/ui/button";
 
 type blogProps = {
   title?: string;

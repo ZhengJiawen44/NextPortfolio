@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Link from "next/link";
-import { Button } from "@/components/button";
+import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
 import BlogForm from "./BlogForm";
 import {
@@ -16,7 +16,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/alert-dialog";
+} from "@/components/ui/alert-dialog";
 
 const BlogPost = ({ id, title, length, date, content }) => {
   const searchParams = useSearchParams();

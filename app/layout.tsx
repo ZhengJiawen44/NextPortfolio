@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@/app/global.css";
 import { space_grotesk, space_mono } from "@/app/ui/fonts";
 import Footer from "@/components/Footer";
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

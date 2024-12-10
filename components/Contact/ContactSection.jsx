@@ -1,7 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import React from "react";
-import { Button } from "@/components/button";
+import { Button } from "@/components/ui/button";
 
 const ContactSection = () => {
   const {
