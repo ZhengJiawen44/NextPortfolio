@@ -116,7 +116,9 @@ const BlogPost = ({ id, title, length, date, content }) => {
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
               <form onSubmit={(event) => handleDelete(event)}>
-                <AlertDialogAction type="submit">Continue</AlertDialogAction>
+                <AlertDialogAction className="w-full" type="submit">
+                  Continue
+                </AlertDialogAction>
               </form>
             </AlertDialogFooter>
           </AlertDialogContent>
