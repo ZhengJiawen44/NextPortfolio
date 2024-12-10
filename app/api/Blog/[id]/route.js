@@ -26,14 +26,21 @@ export async function PATCH(req, { params }) {
   const { id } = await params;
   const body = await req.json();
   const isValid = validate(body);
-  if (isValid) {
+
+  if (isValid === true) {
     const blog = await Blog.findByIdAndUpdate(id, body);
+
     if (blog) {
       return NextResponse.json(
         { message: "succesfully updated blog" },
         { status: 200 }
       );
     }
+    return NextResponse.json(
+      { message: "could not update your blog" },
+      { status: 500 }
+    );
+  } else {
     return NextResponse.json(
       { message: "could not update your blog" },
       { status: 500 }

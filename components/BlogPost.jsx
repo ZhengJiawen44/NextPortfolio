@@ -6,9 +6,7 @@ import { toast } from "react-toastify";
 import Link from "next/link";
 import { Button } from "@/components/button";
 import { useSearchParams } from "next/navigation";
-import FormRow from "./FormRow";
-import TextArea from "./TextArea";
-
+import BlogForm from "./BlogForm";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -44,15 +42,12 @@ const BlogPost = ({ id, title, length, date, content }) => {
     }
   };
 
-  const handleEdit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+  const handleEdit = async (value) => {
     try {
       const res = await fetch(`/api/Blog/${id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(value),
       });
       const { message } = await res.json();
       if (res.ok) {
@@ -68,37 +63,12 @@ const BlogPost = ({ id, title, length, date, content }) => {
 
   if (isUpdate) {
     return (
-      <>
-        <div
-          href={`/Blog/${id}`}
-          className=" pt-[6rem] mt-10 h-fit pb-10 mb-10 rounded-[25px]"
-        >
-          <form onSubmit={(event) => handleEdit(event)}>
-            <FormRow
-              name="title"
-              type="text"
-              value={title}
-              noValidation={false}
-            />
-            <FormRow
-              name="length"
-              type="text"
-              value={length}
-              noValidation={false}
-            />
-            <TextArea name="content" value={content} />
-
-            <Link
-              href={`/Blog/${id}`}
-              className="mr-8 my-8 bg-item p-2 px-4 rounded-2xl shadow-inset
-       text-item-foreground hover:text-foreground hover:bg-accent"
-            >
-              cancel
-            </Link>
-            <button type="submit">edit</button>
-          </form>
-        </div>
-      </>
+      <BlogForm
+        title={title}
+        length={length}
+        content={content}
+        onSubmit={handleEdit}
+      />
     );
   }
 
