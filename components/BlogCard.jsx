@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-
 const BlogCard = ({ id, title, length, date, content }) => {
   return (
     <Link

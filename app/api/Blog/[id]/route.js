@@ -1,12 +1,19 @@
 import { Blog } from "@/app/(models)/BlogModel";
 import { NextResponse } from "next/server";
 import { validate } from "@/lib/blogValidation";
+import * as dayjs from "dayjs";
 
 export async function GET(req, { params }) {
   const { id } = await params;
   const blog = await Blog.findById(id);
 
-  return NextResponse.json({ blog }, { status: 200 });
+  const formattedBlog = blog.toObject();
+  formattedBlog.date = dayjs(blog.createdAt).format("DD/MM/YYYY");
+  delete formattedBlog.updatedAt;
+  delete formattedBlog.createdAt;
+  delete formattedBlog.__v;
+
+  return NextResponse.json({ formattedBlog }, { status: 200 });
 }
 
 export async function DELETE(req, { params }) {

@@ -1,6 +1,7 @@
 import { Blog } from "@/app/(models)/BlogModel";
 import { NextResponse } from "next/server";
 import { validate } from "@/lib/blogValidation";
+import * as dayjs from "dayjs";
 
 export async function POST(req) {
   try {
@@ -31,7 +32,17 @@ export async function POST(req) {
 export async function GET() {
   try {
     const blogs = await Blog.find({});
-    return NextResponse.json({ blogs }, { status: 200 });
+
+    const formattedBlogs = blogs.map((blog) => {
+      const blogObj = blog.toObject();
+      blogObj.date = dayjs(blog.createdAt).format("DD/MM/YYYY");
+      delete blogObj.updatedAt;
+      delete blogObj.createdAt;
+      delete blogObj.__v;
+      return blogObj;
+    });
+
+    return NextResponse.json({ formattedBlogs }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: error.message }, { status: 500 });
   }

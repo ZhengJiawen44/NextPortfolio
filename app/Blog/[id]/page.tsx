@@ -3,23 +3,24 @@ import BlogPost from "@/components/BlogPost";
 const Blog = async ({ params }: { params: { id: string } }) => {
   const { id } = await params;
 
-  const data = await fetch(`http:/localhost:3000/api/Blog/${id}`, {
+  const res = await fetch(`http:/localhost:3000/api/Blog/${id}`, {
     method: "GET",
     cache: "no-store",
   });
-  const { blog } = await data.json();
+  const { formattedBlog } = await res.json();
+  console.log(formattedBlog);
 
-  if (!blog) {
+  if (!formattedBlog) {
     return <div>Blog post not found</div>;
   }
 
   return (
     <BlogPost
-      id={blog._id}
-      title={blog.title}
-      length={blog.length}
-      date={blog.date}
-      content={blog.content}
+      id={formattedBlog._id}
+      title={formattedBlog.title}
+      length={formattedBlog.length}
+      date={formattedBlog.date}
+      content={formattedBlog.content}
     />
   );
 };

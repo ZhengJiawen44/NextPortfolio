@@ -4,17 +4,25 @@ import BlogCard from "@/components/BlogCard";
 import Link from "next/link";
 
 const BlogSection = async ({ displayAll }) => {
-  const data = await fetch("http:/localhost:3000/api/Blog", {
-    method: "GET",
-    cache: "no-store",
-  });
-  const { blogs } = await data.json();
-
   let displayData = [];
-  if (displayAll || blogs.length <= 2) {
-    displayData = blogs;
-  } else {
-    displayData = blogs.slice(0, 2);
+  try {
+    const data = await fetch("http:/localhost:3000/api/Blog", {
+      method: "GET",
+      cache: "no-store",
+    });
+    const { formattedBlogs } = await data.json();
+
+    if (formattedBlogs) {
+      if (displayAll || formattedBlogs.length <= 2) {
+        displayData = formattedBlogs;
+      } else {
+        displayData = formattedBlogs.slice(0, 2);
+      }
+    } else {
+      return <div>no blogs to display</div>;
+    }
+  } catch (error) {
+    return <div>{error.message}</div>;
   }
 
   return (
@@ -52,18 +60,20 @@ const BlogSection = async ({ displayAll }) => {
         </div>
       </div>
 
-      {displayData.map(({ _id, title, length, date, content }) => {
-        return (
-          <BlogCard
-            key={_id}
-            id={_id}
-            title={title}
-            length={length}
-            date={date}
-            content={content}
-          />
-        );
-      })}
+      {displayData.length > 0
+        ? displayData.map(({ _id, title, length, date, content }) => {
+            return (
+              <BlogCard
+                key={_id}
+                id={_id}
+                title={title}
+                length={length}
+                date={date}
+                content={content}
+              />
+            );
+          })
+        : "No blogs to display"}
 
       <Link
         href={displayAll ? "/" + "#Blogs  " : "/Blog"}
