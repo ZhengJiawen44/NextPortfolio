@@ -1,6 +1,6 @@
 import React from "react";
 import { TbSearch, TbPlus } from "react-icons/tb";
-import BlogCard from "@/components/BlogCard";
+import BlogCard from "./BlogCard";
 import Link from "next/link";
 
 const BlogSection = async ({ displayAll }) => {

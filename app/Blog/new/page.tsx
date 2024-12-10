@@ -5,7 +5,7 @@ import { z } from "zod";
 import { blog } from "@/schemas";
 import { useRouter } from "next/navigation";
 
-import BlogForm from "@/components/BlogForm";
+import BlogForm from "@/components/Blog/BlogForm";
 
 const page = () => {
   const router = useRouter();

@@ -1,10 +1,10 @@
-import AboutSection from "@/components/AboutSection";
-import ProjectSection from "@/components/ProjectSection";
-import IslandDash from "@/components/IslandDash";
-import TechSection from "@/components/TechSection";
-import BlogSection from "@/components/BlogSection";
-import ContactSection from "@/components/ContactSection";
-import { ThemeToggle, toggleVariants } from "@/components/ThemeToggle";
+import AboutSection from "@/components/About/AboutSection";
+import ProjectSection from "@/components/Project/ProjectSection";
+import IslandDash from "@/components/Dash/IslandDash";
+import TechSection from "@/components/Tech/TechSection";
+import BlogSection from "@/components/Blog/BlogSection";
+import ContactSection from "@/components/Contact/ContactSection";
+// import { ThemeToggle, toggleVariants } from "@/components/ThemeToggle";
 
 // import { useObserver } from "@/tilsuseObserver";
 

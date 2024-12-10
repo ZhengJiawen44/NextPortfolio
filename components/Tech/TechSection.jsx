@@ -2,7 +2,7 @@ import React from "react";
 import { techData } from "@/lib/data/techData";
 import { techWord } from "@/lib/data/techWord";
 
-import TechCard from "@/components/TechCard";
+import TechCard from "./TechCard";
 
 const TechSection = () => {
   return (

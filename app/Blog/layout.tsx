@@ -1,4 +1,4 @@
-import IslandDash from "@/components/IslandDash";
+import IslandDash from "@/components/Dash/IslandDash";
 import { ReactNode } from "react";
 
 interface LayoutProps {

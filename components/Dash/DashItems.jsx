@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "@/components/ui/island.module.css";
+import styles from "./island.module.css";
 
 const DashItems = ({ icon, label }) => {
   function scrollToSection(e) {

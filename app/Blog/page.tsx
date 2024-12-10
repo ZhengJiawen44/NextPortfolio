@@ -1,5 +1,5 @@
 import "@/components/Loading";
-import BlogSection from "@/components/BlogSection";
+import BlogSection from "@/components/Blog/BlogSection";
 
 const Blog = async () => {
   return (
