@@ -70,7 +70,7 @@ const ContactSection = () => {
         {/* Submit Button */}
         <Button
           disabled={isSubmitting}
-          className="mt-4 bg-cyan200 hover:bg-cyan100 text-[1.1rem] hover:text-black md:col-span-2"
+          className="mt-4 text-[1.1rem] hover:text-black md:col-span-2"
         >
           submit
         </Button>
