@@ -7,11 +7,8 @@ import TechCard from "./TechCard";
 const TechSection = () => {
   return (
     <div>
-      <h1
-        id="Tech"
-        className="mb-[4rem] text-[2.5rem] md:text-[3.5rem] static font-extrabold "
-      >
-        Tech I use
+      <h1 id="Tech" className="mb-[4rem] text-[2.5rem] md:text-title static">
+        {/* Tech I use */}
       </h1>
 
       <div className="relative h-[5rem] overflow-hidden">

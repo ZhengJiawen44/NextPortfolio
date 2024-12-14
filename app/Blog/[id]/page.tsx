@@ -8,7 +8,6 @@ const Blog = async ({ params }: { params: { id: string } }) => {
     cache: "no-store",
   });
   const { formattedBlog } = await res.json();
-  console.log(formattedBlog);
 
   if (!formattedBlog) {
     return <div>Blog post not found</div>;

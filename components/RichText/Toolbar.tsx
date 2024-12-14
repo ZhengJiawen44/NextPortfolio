@@ -9,13 +9,16 @@ import {
   TbListNumbers,
 } from "react-icons/tb";
 import {
+  LuImage,
   LuHeading1,
   LuHeading2,
   LuHeading3,
-  LuHeading4,
-  LuHeading5,
+  LuAlignCenter,
+  LuAlignRight,
+  LuAlignLeft,
 } from "react-icons/lu";
 import { Toggle } from "@/components/ui/toggle";
+import { Button } from "../ui/button";
 
 interface ToolbarProps {
   editor: Editor | null;
@@ -105,6 +108,54 @@ const Toolbar = ({ editor }: ToolbarProps) => {
           <TbListNumbers />
         </span>
       </Toggle>
+
+      <Toggle
+        pressed={editor?.isActive({ TextAlign: "left" })}
+        onPressedChange={() => {
+          editor?.chain().focus().setTextAlign("left").run();
+        }}
+      >
+        <span>
+          <LuAlignLeft />
+        </span>
+      </Toggle>
+      <Toggle
+        pressed={editor?.isActive({ TextAlign: "center" })}
+        onPressedChange={() => {
+          editor?.chain().focus().setTextAlign("center").run();
+        }}
+      >
+        <span>
+          <LuAlignCenter />
+        </span>
+      </Toggle>
+      <Toggle
+        pressed={editor?.isActive({ TextAlign: "right" })}
+        onPressedChange={() => {
+          editor?.chain().focus().setTextAlign("right").run();
+        }}
+      >
+        <span>
+          <LuAlignRight />
+        </span>
+      </Toggle>
+      <Button
+        onClick={() => {
+          const url = window.prompt("URL");
+
+          if (url) {
+            editor?.chain().focus().setImage({ src: url });
+            editor?.commands.setImage({
+              src: url,
+              alt: "a boring image",
+              title: "a title",
+            });
+          }
+        }}
+        className="bg-transparent hover:bg-accent text-item-foreground hover:text-accent-foreground"
+      >
+        <LuImage />
+      </Button>
     </div>
   );
 };

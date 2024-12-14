@@ -3,9 +3,7 @@ import { data } from "@/lib/data/projectData";
 const ProjectSection = () => {
   return (
     <div id="Project">
-      <h1 className="mb-10 static font-extrabold text-[2.5rem] md:text-[4rem]">
-        Projects
-      </h1>
+      <h1 className="mb-10 static text-[2.5rem] md:text-title">Projects</h1>
       {data.map(({ title, desc, content, tags }) => {
         return (
           <ProjectCard

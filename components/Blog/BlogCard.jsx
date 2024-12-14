@@ -7,7 +7,7 @@ const BlogCard = ({ id, title, length, date, content }) => {
       className="text-foreground relative block h-fit  mb-10 pb-9 rounded-[20px] border-2 border-background hover:border-primaryMedium  overflow-hidden"
     >
       <div className="relative">
-        <h1 className=" pt-[2rem] md:pt-[2rem] w-[95%] m-auto  mb-7 tracking-tighter text-2xl sm:text-4xl md:text-5xl">
+        <h1 className=" pt-[2rem] md:pt-[2rem] w-[95%] m-auto  mb-7 tracking-tighter text-2xl sm:text-4xl md:text-subtitle">
           {title}
         </h1>
         <div className=" flex w-[95%] m-auto ">
@@ -15,7 +15,7 @@ const BlogCard = ({ id, title, length, date, content }) => {
           <p className="">{date}</p>
         </div>
 
-        <p className=" h-[4.4rem] lg:h-[6rem] overflow-hidden mt-6 text-[1rem] md:text-[1.5rem] w-[95%] m-auto  ">
+        <p className=" h-[4.4rem] lg:h-[6rem] overflow-hidden mt-6 text-[1rem] md:text-[1.2rem] w-[95%] m-auto  text-item-foreground">
           {content}
         </p>
       </div>

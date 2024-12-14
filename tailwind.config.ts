@@ -1,6 +1,15 @@
 import type { Config } from "tailwindcss";
-
+import plugin from "tailwindcss/plugin";
 export default {
+  plugins: [
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        ".field-sizing-content": {
+          "field-sizing": "content",
+        },
+      });
+    }),
+  ],
   darkMode: ["class"],
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,7 +17,15 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    fontSize: {
+      title: "var(--title)",
+      subtitle: "var(--subtitle)",
+    },
     extend: {
+      fontFamily: {
+        grotesk: '"Space Grotesk"',
+        mono: '"Space Mono"',
+      },
       screens: {
         xlg: "1600px",
         badgeBR: "1020px",
@@ -111,5 +128,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  // plugins: [require("tailwindcss-animate")],
 } satisfies Config;

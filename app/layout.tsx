@@ -24,7 +24,7 @@ export default function RootLayout({
         <ToastContainer theme="dark" />
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

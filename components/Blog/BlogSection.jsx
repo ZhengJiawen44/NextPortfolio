@@ -29,7 +29,7 @@ const BlogSection = async ({ displayAll }) => {
     <div id="Blogs">
       <div className="mb-[2rem] md:mb-[4rem] md:flex items-center justify-between">
         <div className="flex items-baseline gap-6">
-          <h1 className="text-foreground mb-[5rem] md:mb-0 text-[2.5rem] md:text-[3.5rem] font-extrabold ">
+          <h1 className="text-foreground mb-[5rem] md:mb-0 text-[2.5rem] md:text-title">
             Blogs
           </h1>
           {displayAll && (
@@ -78,7 +78,7 @@ const BlogSection = async ({ displayAll }) => {
       <Link
         href={displayAll ? "/" + "#Blogs  " : "/Blog"}
         scroll={false}
-        className="block w-fit m-auto md:text-[1.4rem] hover:text-foreground hover:translate-y-1"
+        className="block w-fit m-auto md:text-[1.4rem] hover:text-foreground hover:translate-y-1 transition-all ease-in-out duration-200"
       >
         {displayAll ? "Back Home" : "read more"}
       </Link>

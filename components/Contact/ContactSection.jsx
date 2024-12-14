@@ -17,13 +17,13 @@ const ContactSection = () => {
     <div>
       <h1
         id="Contact"
-        className="text-foreground mb-[5rem] text-[2.5rem] md:text-[3.5rem] font-extrabold"
+        className="text-foreground mb-[5rem] text-[2.5rem] md:text-title"
       >
         Contact Me
       </h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-7"
+        className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-x-16 md:p-11 "
       >
         <div className="flex flex-col md:col-span-1">
           <label htmlFor="name" className="md:text-[1.5rem]">
