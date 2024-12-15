@@ -1,6 +1,6 @@
 import React from "react";
 import { TbSearch, TbPlus } from "react-icons/tb";
-import BlogCard from "./BlogCard";
+import BlogCardWrapper from "./BlogCardWrapper";
 import Link from "next/link";
 
 const BlogSection = async ({ displayAll }) => {
@@ -63,7 +63,7 @@ const BlogSection = async ({ displayAll }) => {
       {displayData.length > 0
         ? displayData.map(({ _id, title, length, date, content }) => {
             return (
-              <BlogCard
+              <BlogCardWrapper
                 key={_id}
                 id={_id}
                 title={title}

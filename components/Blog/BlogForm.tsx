@@ -5,7 +5,7 @@ import { z } from "zod";
 import { blog, MAX_LENGTH } from "@/schemas";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-
+import Editor from "@/components/RichText/Editor";
 import {
   Form,
   FormControl,
@@ -24,7 +24,6 @@ type blogProps = {
 };
 
 const BlogForm = ({ title, length, content, onSubmit }: blogProps) => {
-  const [wordCount, setWordCount] = useState(content ? content.length : 0);
   const form = useForm<z.infer<typeof blog>>({
     resolver: zodResolver(blog),
     defaultValues: {
@@ -94,22 +93,9 @@ const BlogForm = ({ title, length, content, onSubmit }: blogProps) => {
                   Content
                 </FormLabel>
                 <FormControl>
-                  <textarea
-                    placeholder="your blog here"
-                    className="h-fit field-sizing-content flex w-full rounded-md border border-item-foreground
-                     bg-transparent px-3 py-2 text-base shadow-sm placeholder:text-muted-foreground
-                      focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring
-                       disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
-                    {...field}
-                    onChange={(e) => {
-                      setWordCount(e.currentTarget.value.length);
-                      field.onChange(e);
-                    }}
-                  />
+                  <Editor content={field.value} onChange={field.onChange} />
                 </FormControl>
-                <span>
-                  word count: {wordCount}/{MAX_LENGTH}
-                </span>
+
                 <FormMessage />
               </div>
             </FormItem>

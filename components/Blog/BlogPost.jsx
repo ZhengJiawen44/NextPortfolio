@@ -1,11 +1,13 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
 import BlogForm from "./BlogForm";
+import DOMPurify from "dompurify";
+
 import {
   AlertDialog,
   AlertDialogAction,
@@ -19,6 +21,10 @@ import {
 } from "@/components/ui/alert-dialog";
 
 const BlogPost = ({ id, title, length, date, content }) => {
+  if (typeof window !== "undefined") {
+    content = DOMPurify.sanitize(content);
+  }
+
   const searchParams = useSearchParams();
   const isUpdate = searchParams.get("action") === "update";
 
@@ -77,16 +83,18 @@ const BlogPost = ({ id, title, length, date, content }) => {
         href={`/Blog/${id}`}
         className=" pt-[6rem] mt-10 h-fit pb-10 mb-10 rounded-[25px]"
       >
-        <h1 className="text-foreground mb-10 tracking-tighter text-2xl sm:text-4xl md:text-5xl">
+        <h1 className="text-foreground mb-10 tracking-tighter text-4xl sm:text-4xl md:text-title">
           {title}
         </h1>
         <div className="flex  mb-[5rem]">
           <p className="mr-4 text-foreground">{length} min read</p>
           <p className="text-foreground">{date}</p>
         </div>
-        <p className=" text-foreground w-full text-[1.2rem] md:text-medium break-words">
-          {content}
-        </p>
+        <p
+          className=" text-foreground w-full text-[1.2rem] md:text-[xl] leading-10 break-words"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
+        {/* {content} */}
 
         <Link
           href={`/Blog/${id}?action=update`}

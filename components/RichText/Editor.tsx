@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import Toolbar from "./Toolbar";
 import { EditorContent, useEditor } from "@tiptap/react";
 import BulletList from "@tiptap/extension-bullet-list";
@@ -7,9 +6,16 @@ import OrderedList from "@tiptap/extension-ordered-list";
 import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
 import TextAlign from "@tiptap/extension-text-align";
+import { useState, useEffect } from "react";
 
-const TextEditor = () => {
+interface textEditorProps {
+  content: string;
+  onChange: (richText: string) => void;
+}
+
+const TextEditor = ({ content, onChange }: textEditorProps) => {
   const editor = useEditor({
+    immediatelyRender: false,
     extensions: [
       StarterKit.configure({
         bulletList: false,
@@ -23,14 +29,21 @@ const TextEditor = () => {
       }),
       TextAlign.configure({ types: ["heading", "paragraph", "image"] }),
     ],
-    content: "<h1>start editing...</h1>",
+    content: content,
     editorProps: {
       attributes: {
         class:
           "prose dark:prose-invert prose-sm sm:prose-base lg:prose-lg xl:prose-2xl m-5 focus:outline-none max-w-none",
       },
     },
+    onUpdate() {
+      setWordCount(editor?.getText().length || 0);
+      onChange(editor?.getHTML());
+      console.log(editor?.getHTML());
+    },
   });
+
+  const [wordCount, setWordCount] = useState(content.length);
 
   return (
     <div className="border rounded-lg">
@@ -38,6 +51,7 @@ const TextEditor = () => {
       <div className="editor-content">
         <EditorContent editor={editor} />
       </div>
+      <p>word count: {wordCount}</p>
       <style jsx global>{`
         .editor-content h1 {
           font-size: 2.5em;
