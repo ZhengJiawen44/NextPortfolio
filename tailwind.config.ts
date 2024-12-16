@@ -1,7 +1,9 @@
 import type { Config } from "tailwindcss";
 import plugin from "tailwindcss/plugin";
+import typography from "@tailwindcss/typography";
 export default {
   plugins: [
+    typography,
     plugin(({ addUtilities }) => {
       addUtilities({
         ".field-sizing-content": {

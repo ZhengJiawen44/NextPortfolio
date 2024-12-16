@@ -1,12 +1,25 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Editor } from "@tiptap/react";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   TbBold,
   TbStrikethrough,
   TbItalic,
   TbList,
   TbListNumbers,
+  TbCode,
 } from "react-icons/tb";
 import {
   LuImage,
@@ -25,29 +38,9 @@ interface ToolbarProps {
 }
 const Toolbar = ({ editor }: ToolbarProps) => {
   !editor && null;
-
+  const [link, setLink] = useState("");
   return (
-    <div className="flex border">
-      <Toggle
-        pressed={editor?.isActive("heading", { level: 1 })}
-        onPressedChange={() => {
-          editor?.chain().focus().toggleHeading({ level: 1 }).run();
-        }}
-      >
-        <span>
-          <LuHeading1 />
-        </span>
-      </Toggle>
-      <Toggle
-        pressed={editor?.isActive("heading", { level: 2 })}
-        onPressedChange={() => {
-          editor?.chain().focus().toggleHeading({ level: 2 }).run();
-        }}
-      >
-        <span>
-          <LuHeading2 />
-        </span>
-      </Toggle>
+    <div className="flex border sticky top-0 z-10 bg-item flex-wrap">
       <Toggle
         pressed={editor?.isActive("heading", { level: 3 })}
         onPressedChange={() => {
@@ -139,23 +132,62 @@ const Toolbar = ({ editor }: ToolbarProps) => {
           <LuAlignRight />
         </span>
       </Toggle>
-      <Button
-        onClick={() => {
-          const url = window.prompt("URL");
 
-          if (url) {
-            editor?.chain().focus().setImage({ src: url });
-            editor?.commands.setImage({
-              src: url,
-              alt: "a boring image",
-              title: "a title",
-            });
-          }
+      <Button
+        onClick={(e) => {
+          e.preventDefault();
+
+          editor?.commands.toggleCodeBlock();
         }}
         className="bg-transparent hover:bg-accent text-item-foreground hover:text-accent-foreground"
       >
-        <LuImage />
+        <TbCode />
       </Button>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button
+            className="bg-transparent hover:bg-accent text-item-foreground hover:text-accent-foreground"
+            onClick={() => setLink("")}
+          >
+            <LuImage />
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Image link</DialogTitle>
+            <DialogDescription>paste your images's address</DialogDescription>
+          </DialogHeader>
+          <div className="flex items-center space-x-2">
+            <div className="grid flex-1 gap-2">
+              <Label htmlFor="link" className="sr-only">
+                Link
+              </Label>
+              <Input
+                id="link"
+                value={link}
+                onChange={(e) => setLink(e.target.value)}
+              />
+            </div>
+            <DialogClose asChild>
+              <Button
+                onClick={() => {
+                  editor?.commands.setImage({
+                    src: link,
+                    alt: "a boring image",
+                    title: "a title",
+                  });
+                }}
+                size="sm"
+                className="px-3"
+              >
+                <span className="sr-only">Copy</span>
+                paste
+              </Button>
+            </DialogClose>
+          </div>
+          <DialogFooter className="sm:justify-start"></DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

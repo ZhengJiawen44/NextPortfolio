@@ -78,7 +78,7 @@ const BlogPost = ({ id, title, length, date, content }) => {
 
   return (
     <>
-      <div className="pt-[6rem] mt-10 h-fit pb-10 mb-10 rounded-[25px]">
+      <div className="md:w-[80%] m-auto pt-[6rem] mt-10 h-fit pb-10 mb-10 rounded-[25px]">
         <h1 className="text-foreground mb-10 tracking-tighter text-4xl sm:text-4xl md:text-title">
           {title}
         </h1>
