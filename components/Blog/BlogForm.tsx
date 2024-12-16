@@ -2,9 +2,8 @@
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { blog, MAX_LENGTH } from "@/schemas";
+import { blog } from "@/schemas";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import Editor from "@/components/RichText/Editor";
 import {
   Form,

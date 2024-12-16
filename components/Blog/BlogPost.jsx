@@ -7,7 +7,21 @@ import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
 import BlogForm from "./BlogForm";
 import BlogContent from "./BlogContentWrapper";
-
+import { IoIosMore } from "react-icons/io";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -25,7 +39,7 @@ const BlogPost = ({ id, title, length, date, content }) => {
   const isUpdate = searchParams.get("action") === "update";
 
   const router = useRouter();
-  const [isDelete, setIsDelete] = useState(false);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDelete = async () => {
@@ -40,7 +54,6 @@ const BlogPost = ({ id, title, length, date, content }) => {
       }
     } catch (error) {
       toast.error(error.message);
-      setIsDelete(!isDelete);
     } finally {
       setIsOpen(false);
     }
@@ -79,32 +92,39 @@ const BlogPost = ({ id, title, length, date, content }) => {
   return (
     <>
       <div className="md:w-[80%] m-auto pt-[6rem] mt-10 h-fit pb-10 mb-10 rounded-[25px]">
-        <h1 className="text-foreground mb-10 tracking-tighter text-4xl sm:text-4xl md:text-title">
-          {title}
-        </h1>
+        <div className="flex  items-center justify-between mb-10 ">
+          <h1 className=" text-foreground tracking-tighter text-4xl sm:text-4xl md:text-title">
+            {title}
+          </h1>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="outline-none w-8 h-8">
+                <IoIosMore className="w-[100%] h-[100%]" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-fit bg-item">
+              <DropdownMenuLabel>options</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem asChild>
+                  <Link href={`/Blog/${id}?action=update`}>edit</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setIsOpen(true)}>
+                  delete
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+
         <div className="flex mb-[5rem]">
           <p className="mr-4 text-foreground">{length} min read</p>
           <p className="text-foreground">{date}</p>
         </div>
         <BlogContent content={content} />
-
-        <Link
-          href={`/Blog/${id}?action=update`}
-          className="mr-8 my-8 bg-item p-2 px-4 rounded-2xl shadow-inset text-item-foreground hover:text-foreground hover:bg-accent"
-        >
-          edit
-        </Link>
-
         <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
-          <AlertDialogTrigger asChild>
-            <Button
-              variant="destructive"
-              className="mr-8 my-8 bg-item p-2 px-4 rounded-2xl shadow-inset text-item-foreground hover:text-foreground"
-            >
-              delete
-            </Button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
+          <AlertDialogContent className="rounded-[20px] md:rounded-[20px]">
             <AlertDialogHeader>
               <AlertDialogTitle>Are you sure?</AlertDialogTitle>
               <AlertDialogDescription>
