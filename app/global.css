@@ -42,6 +42,7 @@ html {
     --font-mono: "Space Mono", monospace;
     --title: 3rem;
     --subtitle: 2rem;
+
     /* text colors */
     --primary-light: #ffffff;
     --primary-medium: #aaaaaa;
@@ -52,6 +53,26 @@ html {
     --cyan-300: #1a3d32;
     --shadow-outset: -8px 8px 10px 1px rgba(0, 0, 0, 0.4);
     --shadow-inset: inset -5px 5px 6px 0px rgba(0, 0, 0, 0.64);
+  }
+  .prose h1 {
+    font-size: 2.25em;
+    margin-top: 0;
+    margin-bottom: 0.8888889em;
+    line-height: 1.1111111;
+  }
+
+  .prose h2 {
+    font-size: 1.5em;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    line-height: 1.3333333;
+  }
+
+  .prose h3 {
+    font-size: 1.25em;
+    margin-top: 1.6em;
+    margin-bottom: 0.6em;
+    line-height: 1.6;
   }
   .dark {
     --background: 0 0% 7.8%;

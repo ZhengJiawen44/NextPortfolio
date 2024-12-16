@@ -14,6 +14,7 @@ interface textEditorProps {
 }
 
 const TextEditor = ({ content, onChange }: textEditorProps) => {
+  const [wordCount, setWordCount] = useState(0);
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
@@ -39,11 +40,11 @@ const TextEditor = ({ content, onChange }: textEditorProps) => {
     onUpdate() {
       setWordCount(editor?.getText().length || 0);
       onChange(editor?.getHTML());
-      console.log(editor?.getHTML());
     },
   });
-
-  const [wordCount, setWordCount] = useState(content.length);
+  editor?.on("create", () => {
+    setWordCount(editor.getText().length);
+  });
 
   return (
     <div className="border rounded-lg">
