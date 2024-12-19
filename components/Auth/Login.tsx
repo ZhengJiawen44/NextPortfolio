@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
+import FormError from "./FormError";
 
 const Login = () => {
   const form = useForm<z.infer<typeof loginZodSchema>>({
@@ -80,6 +81,9 @@ const Login = () => {
             >
               Login
             </Button>
+
+            <FormError message="Invalid credentials" />
+
             <Oauth />
             <p className="m-auto opacity-50 mt-8">
               dont have an account?
