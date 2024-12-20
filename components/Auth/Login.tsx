@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -17,16 +17,29 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import FormError from "./FormError";
+import { error } from "console";
+import FormToast from "./FormToast";
 
 const Login = () => {
+  let serverMessage = null;
   const form = useForm<z.infer<typeof loginZodSchema>>({
     resolver: zodResolver(loginZodSchema),
     defaultValues: { email: "", password: "" },
   });
 
-  const onSubmit = () => {
-    console.log("form action");
+  const onSubmit = async (formData: z.infer<typeof loginZodSchema>) => {
+    try {
+      const response = await fetch("/api/Auth/Login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const { message } = await response.json();
+      serverMessage = message;
+      console.log(message);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -77,12 +90,15 @@ const Login = () => {
             <Button
               type="submit"
               disabled={form.formState.isSubmitting}
-              className="mt-2 text-base"
+              className="mt-2 text-base rounded-lg"
             >
               Login
             </Button>
-
-            <FormError message="Invalid credentials" />
+            {serverMessage ? (
+              <FormToast message="email verification sent" isError={false} />
+            ) : (
+              ""
+            )}
 
             <Oauth />
             <p className="m-auto opacity-50 mt-8">
