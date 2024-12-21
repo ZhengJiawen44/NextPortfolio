@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { mongo, Schema } from "mongoose";
 
 try {
   await mongoose.connect(process.env.MONGODB_URI as string);
@@ -11,6 +11,7 @@ const blogSchema = new Schema(
     title: { type: String },
     length: { type: String },
     content: { type: String },
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
   { timestamps: true }
 );

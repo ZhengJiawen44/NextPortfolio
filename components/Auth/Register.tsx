@@ -9,7 +9,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -31,13 +30,14 @@ const Register = () => {
 
   const onSubmit = async (formData: z.infer<typeof registerZodSchema>) => {
     try {
-      const response = await fetch("/api/Auth/Login", {
+      const response = await fetch("/api/Auth/Register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       const body = await response.json();
+
       if (body.success) {
         setMessage(body.success);
         console.log(body.success);
