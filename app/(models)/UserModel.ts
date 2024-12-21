@@ -12,4 +12,4 @@ const userSchema = new Schema({
   password: String,
 });
 export const userModel =
-  mongoose.model("user", userSchema) || mongoose.models.User;
+  mongoose.models.user || mongoose.model("user", userSchema);

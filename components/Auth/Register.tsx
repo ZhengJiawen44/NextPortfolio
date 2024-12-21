@@ -40,6 +40,7 @@ const Register = () => {
 
       if (body.success) {
         setMessage(body.success);
+        toggleIsError(false);
         console.log(body.success);
       } else {
         toggleIsError(true);
@@ -125,11 +126,8 @@ const Register = () => {
               Register
             </Button>
             <Oauth />
-            {message !== "" ? (
-              <FormToast message={message} isError={isError} />
-            ) : (
-              ""
-            )}
+
+            <FormToast message={message} isError={isError} />
 
             <p className="m-auto opacity-50 mt-8 ">
               already have an account?
