@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { loginZodSchema } from "@/schemas";
+import { registerZodSchema } from "@/schemas";
 import { Button } from "@/components/ui/button";
-import Oauth from "./Oauth";
+
 import {
   Form,
   FormControl,
@@ -18,17 +18,18 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import FormToast from "./FormToast";
+import Oauth from "./Oauth";
 
-const Login = () => {
+const Register = () => {
   const [message, setMessage] = useState("");
   const [isError, toggleIsError] = useState(false);
 
-  const form = useForm<z.infer<typeof loginZodSchema>>({
-    resolver: zodResolver(loginZodSchema),
-    defaultValues: { email: "", password: "" },
+  const form = useForm<z.infer<typeof registerZodSchema>>({
+    resolver: zodResolver(registerZodSchema),
+    defaultValues: { name: "", email: "", password: "", confirmPassword: "" },
   });
 
-  const onSubmit = async (formData: z.infer<typeof loginZodSchema>) => {
+  const onSubmit = async (formData: z.infer<typeof registerZodSchema>) => {
     try {
       const response = await fetch("/api/Auth/Login", {
         method: "POST",
@@ -59,8 +60,21 @@ const Login = () => {
              px-5 md:px-16 py-9 rounded-2xl grid gap-y-2 md:gap-y-7 border-item-foreground
               border-[1px] shadow-2xl shadow-black mb-6 sm:mb-0"
           >
-            <h1 className="m-auto text-4xl ">Login</h1>
-            <p className="m-auto opacity-55 text-md">Welcome back</p>
+            <h1 className="m-auto text-4xl ">Register</h1>
+            <p className="m-auto opacity-55 text-md">Welcome</p>
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[1rem]">Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="email"
@@ -74,7 +88,6 @@ const Login = () => {
                 </FormItem>
               )}
             />
-
             <FormField
               control={form.control}
               name="password"
@@ -84,33 +97,43 @@ const Login = () => {
                   <FormControl>
                     <Input placeholder="" {...field} type="password" />
                   </FormControl>
-                  <FormDescription>
-                    <a href="/" className="underline">
-                      forgot password?
-                    </a>
-                  </FormDescription>
+
                   <FormMessage />
                 </FormItem>
               )}
             />
-
+            <FormField
+              control={form.control}
+              name="confirmPassword"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[1rem]">
+                    Confirm password
+                  </FormLabel>
+                  <FormControl>
+                    <Input placeholder="" {...field} type="password" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <Button
               type="submit"
               disabled={form.formState.isSubmitting}
               className="mt-2 text-base rounded-lg"
             >
-              Login
+              Register
             </Button>
+            <Oauth />
             {message !== "" ? (
               <FormToast message={message} isError={isError} />
             ) : (
               ""
             )}
 
-            <Oauth />
-            <p className="m-auto opacity-50 mt-8">
-              dont have an account?
-              <Link href="Register"> Register</Link>
+            <p className="m-auto opacity-50 mt-8 ">
+              already have an account?
+              <Link href="Login">{" Login"}</Link>
             </p>
           </form>
         </Form>
@@ -119,4 +142,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

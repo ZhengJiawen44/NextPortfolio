@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { loginZodSchema } from "@/schemas";
+import { registerZodSchema } from "@/schemas";
 import { Button } from "@/components/ui/button";
 import Oauth from "./Oauth";
 import {
@@ -19,16 +19,16 @@ import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import FormToast from "./FormToast";
 
-const Login = () => {
+const DefaultForm = () => {
   const [message, setMessage] = useState("");
   const [isError, toggleIsError] = useState(false);
 
-  const form = useForm<z.infer<typeof loginZodSchema>>({
-    resolver: zodResolver(loginZodSchema),
+  const form = useForm<z.infer<typeof registerZodSchema>>({
+    resolver: zodResolver(registerZodSchema),
     defaultValues: { email: "", password: "" },
   });
 
-  const onSubmit = async (formData: z.infer<typeof loginZodSchema>) => {
+  const onSubmit = async (formData: z.infer<typeof registerZodSchema>) => {
     try {
       const response = await fetch("/api/Auth/Login", {
         method: "POST",
@@ -119,4 +119,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default DefaultForm;

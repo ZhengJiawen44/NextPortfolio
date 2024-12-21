@@ -1,7 +1,12 @@
 import { NextResponse, NextRequest } from "next/server";
-export async function POST(req) {
+import { loginZodSchema } from "@/schemas";
+export async function POST(req: NextRequest) {
   const body = await req.json();
-  console.log(body);
+  const validation = loginZodSchema.safeParse(body);
 
-  return NextResponse.json({ message: "hit" });
+  if (validation.success === true) {
+    return NextResponse.json({ success: "email sent" });
+  }
+
+  return NextResponse.json({ error: "invalid fields!" });
 }
