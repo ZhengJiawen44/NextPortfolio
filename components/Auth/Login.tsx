@@ -38,6 +38,7 @@ const Login = () => {
 
       const body = await response.json();
       if (body.success) {
+        toggleIsError(false);
         setMessage(body.success);
         console.log(body.success);
       } else {
