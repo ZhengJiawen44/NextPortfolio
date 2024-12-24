@@ -1,7 +1,7 @@
 import { registerZodSchema } from "@/schemas";
 import { NextResponse, NextRequest } from "next/server";
-import { userModel } from "@/app/(models)/UserModel";
 import { hash } from "@/lib/hash";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -11,7 +11,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "malformed syntax" });
   }
 
-  const emailTaken = (await userModel.findOne({ email: body.email })) !== null;
+  const emailTaken =
+    (await prisma.user.findUnique({
+      where: { email: body.email },
+    })) !== null;
   if (emailTaken) {
     return NextResponse.json({ error: "this email is already taken" });
   }
@@ -19,7 +22,11 @@ export async function POST(req: NextRequest) {
   //code block to send email verification
   try {
     body.password = await hash(body.password);
-    const user = await userModel.create(body);
+
+    const { name, email, password } = body;
+    const user = await prisma.user.create({
+      data: { name, email, password },
+    });
     if (!user) {
       return NextResponse.json({
         error: "user could not be created at this time",
@@ -27,7 +34,7 @@ export async function POST(req: NextRequest) {
     }
     return NextResponse.json({ success: "email sent" });
   } catch (error) {
-    console.log(error);
+    console.error(error.message);
     return NextResponse.json({ error: "malformed syntax" });
   }
 }

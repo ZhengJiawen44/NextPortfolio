@@ -1,7 +1,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import { loginZodSchema } from "@/schemas";
 import bcrypt from "bcrypt";
-import { userModel } from "@/app/(models)/UserModel";
+import { prisma } from "@/lib/prisma";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
   //compare password from database and frontend
   try {
-    const user = await userModel.findOne({ email: body.email });
+    const user = await prisma.user.findUnique({ where: { email: body.email } });
     if (!user) {
       return NextResponse.json({ error: "user not found" });
     }
