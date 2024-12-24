@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { registerZodSchema } from "@/schemas";
 import { Button } from "@/components/ui/button";
-import { signIn } from "next-auth/react";
 
 import {
   Form,

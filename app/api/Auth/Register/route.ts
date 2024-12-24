@@ -1,6 +1,7 @@
 import { registerZodSchema } from "@/schemas";
 import { NextResponse, NextRequest } from "next/server";
 import { hash } from "@/lib/hash";
+import { signToken } from "@/lib/token";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(req: NextRequest) {
@@ -19,10 +20,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "this email is already taken" });
   }
 
-  //code block to send email verification
   try {
     body.password = await hash(body.password);
-
     const { name, email, password } = body;
     const user = await prisma.user.create({
       data: { name, email, password },
@@ -32,6 +31,10 @@ export async function POST(req: NextRequest) {
         error: "user could not be created at this time",
       });
     }
+
+    //create a token with the email
+    const emailToken = signToken({ email: email }, "0.5h");
+
     return NextResponse.json({ success: "email sent" });
   } catch (error) {
     console.error(error.message);
