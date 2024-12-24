@@ -7,9 +7,10 @@ try {
 }
 
 const userSchema = new Schema({
-  name: String,
-  email: String,
-  password: String,
+  name: { type: String, trim: true },
+  email: { type: String, trim: true },
+  emailVerified: { type: Date },
+  password: { type: String, trim: true },
 });
 export const userModel =
   mongoose.models.user || mongoose.model("user", userSchema);
