@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "@/lib/token";
 import { prisma } from "@/lib/prisma";
-import { redirect } from "next/navigation";
-
+import { cookies } from "next/headers";
 export async function POST(req: NextRequest) {
   const { payload } = await req.json();
 
   const { errorMessage, decodedPayload } = verifyToken(payload);
+
+  console.log(decodedPayload);
 
   if (errorMessage) {
     return NextResponse.json({ error: errorMessage });
@@ -26,5 +27,23 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  return NextResponse.json({ message: "email verified" });
+  const cookieStore = await cookies();
+  cookieStore.getAll().forEach((cookie) => {
+    cookieStore.delete(cookie.name);
+  });
+
+  const response = NextResponse.json({ message: "email verified" });
+  response.cookies.set("name", decodedPayload.name, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    maxAge: 60 * 60,
+  });
+
+  response.cookies.set("email", decodedPayload.email, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    maxAge: 60 * 60,
+  });
+
+  return response;
 }

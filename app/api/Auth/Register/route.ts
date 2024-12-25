@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     }
 
     //create a token with the email
-    const emailToken = signToken({ email: email }, "1min");
+    const emailToken = signToken({ name: name, email: email }, "1h");
 
     //send email with the token embedded in the URL
     sendVerificationEmail(body.email, emailToken);

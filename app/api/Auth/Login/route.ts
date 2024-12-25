@@ -16,11 +16,13 @@ export async function POST(req: NextRequest) {
     if (!user) {
       return NextResponse.json({ error: "user not found" });
     }
-    const { password } = user;
+    const { password, emailVerified } = user;
+
     const passwordValid = await bcrypt.compare(body.password, password);
-    if (!passwordValid) {
+    if (!passwordValid || !emailVerified) {
       return NextResponse.json({ error: "invalid credentials" });
     }
-    return NextResponse.json({ success: "email sent" });
+
+    return NextResponse.json({ success: "logged in" });
   } catch (error) {}
 }
