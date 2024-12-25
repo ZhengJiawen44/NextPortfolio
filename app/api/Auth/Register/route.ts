@@ -3,6 +3,8 @@ import { NextResponse, NextRequest } from "next/server";
 import { hash } from "@/lib/hash";
 import { signToken } from "@/lib/token";
 import { prisma } from "@/lib/prisma";
+import transporter from "@/lib/mailer";
+import { verifyEmail } from "@/lib/verifyEmail";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -33,7 +35,10 @@ export async function POST(req: NextRequest) {
     }
 
     //create a token with the email
-    const emailToken = signToken({ email: email }, "0.5h");
+    const emailToken = signToken({ email: email }, "1min");
+
+    //send email with the token embedded in the URL
+    verifyEmail(body.email, emailToken);
 
     return NextResponse.json({ success: "email sent" });
   } catch (error) {
