@@ -8,6 +8,14 @@ export function signToken(payload: object, expiresIn: string) {
 }
 
 export function verifyToken(payload: string) {
-  const decodedPayload = Jwt.verify(payload, String(process.env.AUTH_SECRET));
-  return decodedPayload;
+  let errorMessage;
+  let decodedPayload;
+  Jwt.verify(payload, String(process.env.AUTH_SECRET), function (err, decoded) {
+    if (err) {
+      errorMessage = err.message;
+    } else {
+      decodedPayload = decoded;
+    }
+  });
+  return { errorMessage, decodedPayload };
 }

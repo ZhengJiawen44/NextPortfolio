@@ -1,18 +1,31 @@
 "use client";
-import React from "react";
 import { useSearchParams } from "next/navigation";
 import FailedVerification from "@/components/Auth/FailedVerification";
+import { useEffect } from "react";
+import { redirect } from "next/navigation";
 const page = () => {
   const params = useSearchParams();
   const payload = params.get("token");
 
-  console.log(payload);
-
   if (payload === null) {
     return <FailedVerification />;
   }
-
-  return <div>{payload === null}</div>;
+  //call server end point and verify token
+  useEffect(() => {
+    const validation = async () => {
+      const res = await fetch("/api/Auth/VerifyEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ payload }),
+      });
+      const body = await res.json();
+      if (body.message) {
+        redirect("/");
+      }
+      redirect("/");
+    };
+    validation();
+  }, []);
 };
 
 export default page;
