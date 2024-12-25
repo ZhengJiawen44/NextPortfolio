@@ -26,8 +26,8 @@ const BlogSection = async ({ displayAll }) => {
 
   return (
     <div id="Blogs">
-      <div className="mb-[2rem] md:mb-[4rem] md:flex items-center justify-between border-2">
-        <div className="flex items-baseline gap-6 border-2">
+      <div className="mb-[2rem] md:mb-[4rem] md:flex items-center justify-between ">
+        <div className="flex items-baseline gap-6 ">
           <h1 className="text-foreground mb-[5rem] md:mb-0 text-[2.5rem] md:text-title">
             Blogs
           </h1>
