@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 
-export function verifyEmail(userEmail: string, emailToken: string) {
+export function sendVerificationEmail(userEmail: string, emailToken: string) {
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -16,7 +16,7 @@ export function verifyEmail(userEmail: string, emailToken: string) {
     html: `
     <h1>Verify your account</h1>
     <p>Please click the button below to confirm your email address and finish setting up your account. This link is valid for 24 hours</p>
-    <a href="http://localhost:3000/Auth/Login/${emailToken}">Verify Email</a>`,
+    <a href="http://localhost:3000/Auth/VerifyEmail/?token=${emailToken}">Verify Email</a>`,
   };
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
