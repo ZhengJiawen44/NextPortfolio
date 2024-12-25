@@ -1,9 +1,11 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import FailedVerification from "@/components/Auth/FailedVerification";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { redirect } from "next/navigation";
+
 const page = () => {
+  const [isExpired, setExpired] = useState(false);
   const params = useSearchParams();
   const payload = params.get("token");
 
@@ -20,12 +22,17 @@ const page = () => {
       });
       const body = await res.json();
       if (body.message) {
-        redirect("/");
+        redirect("/Blog");
+      } else {
+        setExpired(true);
       }
-      redirect("/");
     };
     validation();
   }, []);
+
+  if (isExpired) {
+    return <FailedVerification />;
+  }
 };
 
 export default page;

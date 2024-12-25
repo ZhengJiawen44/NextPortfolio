@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "@/lib/token";
 import { prisma } from "@/lib/prisma";
+import { redirect } from "next/navigation";
 
 export async function POST(req: NextRequest) {
   const { payload } = await req.json();
