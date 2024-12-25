@@ -1,5 +1,4 @@
 import React from "react";
-import { TbSearch, TbPlus } from "react-icons/tb";
 import BlogCardWrapper from "./BlogCardWrapper";
 import Link from "next/link";
 
@@ -27,36 +26,11 @@ const BlogSection = async ({ displayAll }) => {
 
   return (
     <div id="Blogs">
-      <div className="mb-[2rem] md:mb-[4rem] md:flex items-center justify-between">
-        <div className="flex items-baseline gap-6">
+      <div className="mb-[2rem] md:mb-[4rem] md:flex items-center justify-between border-2">
+        <div className="flex items-baseline gap-6 border-2">
           <h1 className="text-foreground mb-[5rem] md:mb-0 text-[2.5rem] md:text-title">
             Blogs
           </h1>
-          {displayAll && (
-            <Link
-              className="bg-item w-fit h-fit px-4 py-2  flex items-center gap-1 rounded-[20px] text-item-foreground hover:text-foreground"
-              href="/Blog/new"
-            >
-              <TbPlus />
-              <p>create</p>
-            </Link>
-          )}
-        </div>
-
-        <div
-          className="flex items-center justify-between bg-item
-         rounded-[2rem] shadow-inset
-         mt-10 md:mt-0 
-         md:w-[50%] lg:w-[40%] h-12 "
-        >
-          <input
-            type="text"
-            className=" w-[80%] h-[100%] bg-transparent pl-7 text-medium
-          outline-none"
-          ></input>
-          <button className="w-[20%] h-[100%] flex items-center justify-center">
-            <TbSearch className="w-[50%] h-[50%] ml-[40%] transition-all duration-300 ease-in-out hover:scale-125 hover:text-foreground" />
-          </button>
         </div>
       </div>
 
