@@ -13,7 +13,9 @@ export default function Layout({ children }: LayoutProps) {
       py-2 sm:py-3 flex items-center gap-3 justify-between px-3 sm:px-16"
       >
         <div className="flex max-w-[70%] sm:min-w-[50%] items-center gap-3">
-          <h1 className="sm:text-[1.5rem]">BlogSpot</h1>
+          <h1 className="sm:text-[1.5rem]">
+            <Link href={"/Blog"}>BlogSpot</Link>
+          </h1>
           <SearchBar />
         </div>
 
