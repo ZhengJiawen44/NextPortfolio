@@ -1,11 +1,12 @@
 import Link from "next/link";
 import React from "react";
-import DOMPurify from "dompurify";
 
-const BlogCard = ({ id, title, length, date, displayData }) => {
-  displayData = DOMPurify.sanitize(displayData);
-  displayData = displayData.replace(/<img[^>]+>/g, "");
-
+interface CardProps {
+  id: String;
+  title: String;
+  date: String;
+}
+const RecommendationCard = ({ id, title, date }: CardProps) => {
   return (
     <Link
       href={`/Blog/${id}`}
@@ -19,15 +20,10 @@ const BlogCard = ({ id, title, length, date, displayData }) => {
           <p className="mr-6">{length} min read</p>
           <p className="">{date}</p>
         </div>
-
-        <p
-          className=" h-[4.4rem] lg:h-[6rem] overflow-hidden mt-6 text-[1rem] md:text-[1.2rem] w-[95%] m-auto  text-item-foreground"
-          dangerouslySetInnerHTML={{ __html: displayData }}
-        />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent from-60% to-background  z-10 pointer-events-none"></div>
     </Link>
   );
 };
 
-export default BlogCard;
+export default RecommendationCard;
