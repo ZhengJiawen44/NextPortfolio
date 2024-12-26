@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { useSearchParams } from "next/navigation";
 import BlogForm from "./BlogForm";
 import BlogContent from "./BlogContentWrapper";
@@ -14,12 +13,7 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import {
@@ -31,10 +25,9 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-const BlogPost = ({ id, title, length, date, content }) => {
+const BlogPost = ({ id, title, subtitle, length, date, content }) => {
   const searchParams = useSearchParams();
   const isUpdate = searchParams.get("action") === "update";
 
@@ -82,6 +75,7 @@ const BlogPost = ({ id, title, length, date, content }) => {
     return (
       <BlogForm
         title={title}
+        subtitle={subtitle}
         length={length}
         content={content}
         onSubmit={handleEdit}
@@ -122,6 +116,8 @@ const BlogPost = ({ id, title, length, date, content }) => {
           <p className="mr-4 text-foreground">{length} min read</p>
           <p className="text-foreground">{date}</p>
         </div>
+        <i className="mb-10 block text-gray-300 font-grotesk">{subtitle}</i>
+
         <BlogContent content={content} />
         <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
           <AlertDialogContent className="rounded-[20px] md:rounded-[20px]">

@@ -9,6 +9,7 @@ try {
 const blogSchema = new Schema(
   {
     title: { type: String },
+    subtitle: { type: String },
     length: { type: String },
     content: { type: String },
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },

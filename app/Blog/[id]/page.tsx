@@ -17,6 +17,7 @@ const Blog = async ({ params }: { params: { id: string } }) => {
     <BlogPost
       id={formattedBlog._id}
       title={formattedBlog.title}
+      subtitle={formattedBlog.subtitle}
       length={formattedBlog.length}
       date={formattedBlog.date}
       content={formattedBlog.content}

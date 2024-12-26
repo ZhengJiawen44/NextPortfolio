@@ -35,7 +35,9 @@ const BlogSection = async ({ displayAll }) => {
       </div>
 
       {displayData.length > 0
-        ? displayData.map(({ _id, title, length, date, content }) => {
+        ? displayData.map(({ _id, title, subtitle, length, date, content }) => {
+            const displayData = subtitle ?? content;
+
             return (
               <BlogCardWrapper
                 key={_id}
@@ -43,7 +45,7 @@ const BlogSection = async ({ displayAll }) => {
                 title={title}
                 length={length}
                 date={date}
-                content={content}
+                displayData={displayData}
               />
             );
           })

@@ -5,6 +5,9 @@ export const blog = z.object({
   title: z
     .string({ message: "title cannot be empty!" })
     .min(5, { message: "title cannot be less than 5 characters!" }),
+  subtitle: z
+    .string()
+    .max(200, { message: "subtitles cannot be longer than 200 words" }),
   length: z
     .string({ message: "length cannot be empty!" })
     .max(2, { message: "length cannot be more than 2 characters!" })

@@ -17,18 +17,26 @@ import { Button } from "@/components/ui/button";
 
 type blogProps = {
   title?: string;
+  subtitle?: string;
   length?: string;
   content?: string;
   onSubmit: Function;
 };
 
-const BlogForm = ({ title, length, content, onSubmit }: blogProps) => {
+const BlogForm = ({
+  title,
+  subtitle,
+  length,
+  content,
+  onSubmit,
+}: blogProps) => {
   const form = useForm<z.infer<typeof blog>>({
     resolver: zodResolver(blog),
     defaultValues: {
       title: title || "",
       length: length || "",
       content: content || "",
+      subtitle: subtitle || "",
     },
   });
 
@@ -82,6 +90,27 @@ const BlogForm = ({ title, length, content, onSubmit }: blogProps) => {
             )}
           />
         </div>
+        <FormField
+          control={form.control}
+          name="subtitle"
+          render={({ field }) => (
+            <FormItem className=" my-5 min-w-[60%]">
+              <div className="flex flex-col">
+                <FormLabel className="text-[1rem] sm:text-[1.3rem] text-white">
+                  Subtitle
+                </FormLabel>
+                <FormControl>
+                  <textarea
+                    placeholder="an optional thumbnail description"
+                    className="border border-item-foreground bg-transparent p-2 rounded-lg"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </div>
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="content"

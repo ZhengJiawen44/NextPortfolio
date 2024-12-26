@@ -2,8 +2,9 @@ import Link from "next/link";
 import React from "react";
 import DOMPurify from "dompurify";
 
-const BlogCard = ({ id, title, length, date, content }) => {
-  content = DOMPurify.sanitize(content);
+const BlogCard = ({ id, title, length, date, displayData }) => {
+  displayData = DOMPurify.sanitize(displayData);
+  displayData = displayData.replace(/<img[^>]+>/g, "");
 
   return (
     <Link
@@ -21,7 +22,7 @@ const BlogCard = ({ id, title, length, date, content }) => {
 
         <p
           className=" h-[4.4rem] lg:h-[6rem] overflow-hidden mt-6 text-[1rem] md:text-[1.2rem] w-[95%] m-auto  text-item-foreground"
-          dangerouslySetInnerHTML={{ __html: content }}
+          dangerouslySetInnerHTML={{ __html: displayData }}
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent from-60% to-background  z-10 pointer-events-none"></div>

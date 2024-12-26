@@ -10,7 +10,7 @@ export default function Layout({ children }: LayoutProps) {
     <>
       <div
         className="shadow-lg shadow-black/30 w-full border-b-[1px] 
-      py-2 sm:py-3 flex items-center gap-3 justify-between px-3 sm:px-16"
+      py-2 sm:py-3 flex items-center gap-3 justify-between px-3 lg:px-[3rem] "
       >
         <div className="flex max-w-[70%] sm:min-w-[50%] items-center gap-3">
           <h1 className="sm:text-[1.5rem]">
@@ -28,14 +28,16 @@ export default function Layout({ children }: LayoutProps) {
             <p className="hidden sm:block m-0 p-0">write</p>
           </Link>
 
-          <TbUserCircle
-            className="text-item-foreground h-[2rem] w-[2rem] sm:h-[2.5rem] sm:w-[2.5rem]
+          <Link href="/Auth/Login">
+            <TbUserCircle
+              className="text-item-foreground h-[2rem] w-[2rem] sm:h-[2.5rem] sm:w-[2.5rem]
            hover:text-white hover:cursor-pointer transition-all duration-300"
-          />
+            />
+          </Link>
         </div>
       </div>
 
-      <div className="mt-[15vh] m-auto md:mt-[20vh]  w-[90%] sm:w-[80%] md:w-[80%] lg:w-[70%] text-primaryMedium">
+      <div className="mt-[15vh] m-auto lg:ml-[18vw] md:mt-[20vh]  w-[90%] sm:w-[80%] md:w-[70%] lg:w-[50%] ">
         {children}
       </div>
     </>
