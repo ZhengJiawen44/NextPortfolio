@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 const BlogCard = ({ id, title, length, date, displayData }) => {
   displayData = DOMPurify.sanitize(displayData);
   displayData = displayData.replace(/<img[^>]+>/g, "");
-
+  // console.log(displayData);
   return (
     <div
       className="text-foreground relative block h-fit  mb-8 rounded-[20px]  overflow-hidden hover:cursor-pointer"

@@ -36,7 +36,10 @@ const BlogSection = async ({ displayAll }) => {
 
       {displayData.length > 0
         ? displayData.map(({ _id, title, subtitle, length, date, content }) => {
-            const displayData = subtitle ?? content;
+            let displayData = subtitle;
+            if (subtitle === "") {
+              displayData = content;
+            }
 
             return (
               <BlogCardWrapper
