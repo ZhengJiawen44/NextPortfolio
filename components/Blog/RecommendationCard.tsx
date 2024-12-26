@@ -8,21 +8,19 @@ interface CardProps {
 }
 const RecommendationCard = ({ id, title, date }: CardProps) => {
   return (
-    <Link
-      href={`/Blog/${id}`}
-      className="text-foreground relative block h-fit  mb-10 pb-9 rounded-[20px] border-2 border-background   overflow-hidden"
-    >
-      <div className="relative">
-        <h1 className=" pt-[2rem]  w-[95%] m-auto  mb-7 tracking-tighter text-2xl sm:text-4xl md:text-subtitle">
+    <>
+      <Link
+        href={`/Blog/${id}`}
+        className="text-foreground relative block h-fit mb-8"
+      >
+        <h1 className=" font-bold font-grotesk w-[95%] mb-2 tracking-tighter text-xl">
           {title}
         </h1>
-        <div className=" flex w-[95%] m-auto ">
-          <p className="mr-6">{length} min read</p>
-          <p className="">{date}</p>
+        <div className=" flex w-[95%] ">
+          <p className="text-item-foreground">{date}</p>
         </div>
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent from-60% to-background  z-10 pointer-events-none"></div>
-    </Link>
+      </Link>
+    </>
   );
 };
 

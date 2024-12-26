@@ -2,6 +2,7 @@
 import { usePathname } from "next/navigation";
 import { ReactNode, useEffect, useState } from "react";
 import SearchBar from "@/components/ui/SearchBar";
+import Recommendation from "@/components/Blog/Recommendation";
 import { TbUserCircle, TbPencil } from "react-icons/tb";
 import Link from "next/link";
 
@@ -59,7 +60,7 @@ export default function Layout({ children }: LayoutProps) {
             {children}
           </div>
           <div className="col-span-1 border-2 overflow-y-auto scrollbar-hide pt-10 pl-[1rem]">
-            Recommendations
+            <Recommendation />
             <p>Continue reading</p>
           </div>
         </div>
