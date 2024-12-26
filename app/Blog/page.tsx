@@ -5,8 +5,7 @@ import { cookies } from "next/headers";
 const Blog = async () => {
   const cookieStore = await cookies();
 
-  console.log(cookieStore.get("name")?.value);
-  console.log(cookieStore.get("email")?.value);
+  // console.log(cookieStore.get("token")?.value);
   return (
     <>
       <BlogSection displayAll />

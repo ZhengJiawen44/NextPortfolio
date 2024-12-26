@@ -7,8 +7,6 @@ export async function POST(req: NextRequest) {
 
   const { errorMessage, decodedPayload } = verifyToken(payload);
 
-  console.log(decodedPayload);
-
   if (errorMessage) {
     return NextResponse.json({ error: errorMessage });
   }
@@ -33,13 +31,7 @@ export async function POST(req: NextRequest) {
   });
 
   const response = NextResponse.json({ message: "email verified" });
-  response.cookies.set("name", decodedPayload.name, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    maxAge: 60 * 60,
-  });
-
-  response.cookies.set("email", decodedPayload.email, {
+  response.cookies.set("token", payload, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     maxAge: 60 * 60,
