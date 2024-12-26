@@ -1,11 +1,25 @@
-import { ReactNode } from "react";
+"use client";
+import { usePathname } from "next/navigation";
+import clsx from "clsx";
+import { ReactNode, useEffect, useState } from "react";
 import SearchBar from "@/components/ui/SearchBar";
 import { TbUserCircle, TbPencil } from "react-icons/tb";
 import Link from "next/link";
+
 interface LayoutProps {
   children: ReactNode;
 }
 export default function Layout({ children }: LayoutProps) {
+  const pathname = usePathname(); ///Blog
+  const [isHomepage, setIsHomePage] = useState(true);
+  useEffect(() => {
+    console.log(isHomepage);
+    if (pathname === "/Blog") {
+      setIsHomePage(false);
+    } else {
+      setIsHomePage(true);
+    }
+  }, [pathname]);
   return (
     <>
       <div
@@ -37,9 +51,18 @@ export default function Layout({ children }: LayoutProps) {
         </div>
       </div>
 
-      <div className="mt-[15vh] m-auto lg:ml-[18vw] md:mt-[20vh]  w-[90%] sm:w-[80%] md:w-[70%] lg:w-[50%] ">
-        {children}
+      <div className="grid grid-cols-3 h-screen">
+        <div className="col-span-2 border-2 overflow-y-auto scrollbar-hide">
+          {children}
+        </div>
+        <div className="col-span-1 border-2 overflow-y-auto scrollbar-hide">
+          Recommendations
+        </div>
       </div>
     </>
   );
 }
+// clsx(
+//   "mt-[15vh] border-4 md:mt-[20vh] m-auto w-[90%] sm:w-[80%] md:w-[70%] lg:w-[50%] col-span-2",
+//   !isHomepage && " lg:ml-[18vw]"
+// )

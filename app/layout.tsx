@@ -29,7 +29,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <Footer />
+          {/* <Footer /> */}
         </ThemeProvider>
       </body>
     </html>
