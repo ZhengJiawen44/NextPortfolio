@@ -115,12 +115,34 @@ const BlogPost = ({ id, title, subtitle, length, date, content }) => {
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-
-        <div className="flex mb-[5rem]">
-          <p className="mr-4 text-foreground">{length} min read</p>
-          <p className="text-foreground">{date}</p>
-        </div>
         <i className="mb-10 block text-gray-300 font-grotesk">{subtitle}</i>
+
+        {/*userprofile and name */}
+        <div className="mb-10 flex gap-6 items-start">
+          <img
+            src="https://avatars.githubusercontent.com/u/125772813?v=4&size=64"
+            className="rounded-[100rem] w-11 h-11"
+          />
+          <div>
+            <div className="flex mb-1">
+              <p className="mr-4 sm:mr-14 font-semibold text-[1.1rem]">
+                Zheng Jiawen
+              </p>
+              <p className="mr-4">.</p>
+              <a className="text-[0.8rem]">Follow</a>
+            </div>
+            <div className="flex">
+              <p className="mr-4 text-gray-300 font-extralight">
+                {length} min read
+              </p>
+              <div className="flex items-center">
+                <p className="mr-4">.</p>
+              </div>
+
+              <p className="text-gray-300 font-light">{date}</p>
+            </div>
+          </div>
+        </div>
 
         <BlogContent content={content} />
         <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
