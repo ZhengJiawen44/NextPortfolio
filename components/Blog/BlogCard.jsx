@@ -1,23 +1,37 @@
 import Link from "next/link";
 import React from "react";
 import DOMPurify from "dompurify";
+import { TbBookmark } from "react-icons/tb";
+import { redirect } from "next/navigation";
 
 const BlogCard = ({ id, title, length, date, displayData }) => {
   displayData = DOMPurify.sanitize(displayData);
   displayData = displayData.replace(/<img[^>]+>/g, "");
 
   return (
-    <Link
-      href={`/Blog/${id}`}
-      className="text-foreground relative block h-fit  mb-10 pb-9 rounded-[20px] border-2 border-background   overflow-hidden"
+    <div
+      className="text-foreground relative block h-fit  mb-8 rounded-[20px]  overflow-hidden hover:cursor-pointer"
+      onClick={() => {
+        redirect(`/Blog/${id}`, "push");
+      }}
     >
       <div className="relative">
         <h1 className=" pt-[2rem]  w-[95%] m-auto  mb-7 tracking-tighter text-2xl sm:text-4xl md:text-subtitle">
           {title}
         </h1>
+
         <div className=" flex w-[95%] m-auto ">
           <p className="mr-6">{length} min read</p>
-          <p className="">{date}</p>
+          <p className="mr-6">{date}</p>
+          <button
+            onClick={(event) => {
+              event.stopPropagation();
+              console.log("bookmarked");
+            }}
+            className="relative flex hover:scale-125 transition-all duration-200"
+          >
+            <TbBookmark className="w-5 h-5" />
+          </button>
         </div>
 
         <p
@@ -26,7 +40,7 @@ const BlogCard = ({ id, title, length, date, displayData }) => {
         />
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent from-60% to-background  z-10 pointer-events-none"></div>
-    </Link>
+    </div>
   );
 };
 

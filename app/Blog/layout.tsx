@@ -13,7 +13,6 @@ export default function Layout({ children }: LayoutProps) {
   const pathname = usePathname(); ///Blog
   const [isHomepage, setIsHomePage] = useState(true);
   useEffect(() => {
-    console.log(isHomepage);
     if (pathname === "/Blog") {
       setIsHomePage(true);
     } else {
@@ -54,14 +53,13 @@ export default function Layout({ children }: LayoutProps) {
       {isHomepage ? (
         <div className="lg:grid grid-cols-3 h-screen">
           <div
-            className="col-span-2 border-2 lg:overflow-y-auto lg:scrollbar-hide 
-       pt-10 lg:pl-[1rem] xl:pl-[10rem] pr-7"
+            className="col-span-2  lg:overflow-y-auto lg:scrollbar-hide 
+       pt-10 pl-[2rem] xl:pl-[8rem] 2xl:pl-[16rem] pr-7"
           >
             {children}
           </div>
-          <div className="col-span-1 border-2 overflow-y-auto scrollbar-hide pt-10 pl-[1rem]">
+          <div className="col-span-1 border-l-2 overflow-y-auto scrollbar-hide pt-16 pl-[2.5rem]">
             <Recommendation />
-            <p>Continue reading</p>
           </div>
         </div>
       ) : (

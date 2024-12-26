@@ -83,6 +83,10 @@ const BlogPost = ({ id, title, subtitle, length, date, content }) => {
     );
   }
 
+  //continue reading function
+  localStorage.setItem("lastReadTitle", title);
+  localStorage.setItem("lastReadID", id);
+
   return (
     <>
       <div className="md:w-[80%] m-auto pt-[6rem] mt-10 h-fit pb-10 mb-10 rounded-[25px]">
