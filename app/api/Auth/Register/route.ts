@@ -33,11 +33,14 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    //create a token with the email
-    const emailToken = await signToken({ name: name, email: email }, "1h");
+    //get newly created user's ID
+    const { id } = await prisma.user.findUnique({ where: { email: email } });
+
+    //create a token with the ID
+    const idToken = await signToken({ id: id }, "1h");
 
     //send email with the token embedded in the URL
-    sendVerificationEmail(body.email, emailToken);
+    sendVerificationEmail(body.email, idToken);
 
     return NextResponse.json({ success: "email sent" });
   } catch (error) {

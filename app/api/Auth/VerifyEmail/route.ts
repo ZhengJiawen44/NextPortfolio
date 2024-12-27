@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
 
   try {
     await prisma.user.update({
-      where: { email: String(decodedPayload.email) },
+      where: { id: decodedPayload.id },
       data: { emailVerified: true },
     });
   } catch (error) {
