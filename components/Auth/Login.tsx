@@ -18,8 +18,10 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import FormToast from "./FormToast";
+import { useRouter } from "next/navigation";
 
 const Login = () => {
+  const router = useRouter();
   const [message, setMessage] = useState("");
   const [isError, toggleIsError] = useState(false);
 
@@ -41,6 +43,7 @@ const Login = () => {
         toggleIsError(false);
         setMessage(body.success);
         console.log(body.success);
+        router.push("/Blog");
       } else {
         toggleIsError(true);
         setMessage(body.error);
