@@ -5,14 +5,13 @@ import { cookies } from "next/headers";
 export async function POST(req: NextRequest) {
   const { payload } = await req.json();
 
-  const { errorMessage, decodedPayload } = verifyToken(payload);
-
+  const { errorMessage, decodedPayload } = await verifyToken(payload);
   if (errorMessage) {
     return NextResponse.json({ error: errorMessage });
   }
   try {
     await prisma.user.update({
-      where: { email: decodedPayload.email },
+      where: { email: String(decodedPayload.email) },
       data: { emailVerified: true },
     });
   } catch (error) {

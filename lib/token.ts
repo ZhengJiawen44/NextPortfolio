@@ -1,21 +1,36 @@
 import Jwt from "jsonwebtoken";
+import * as jose from "jose";
 
-export function signToken(payload: object, expiresIn: string) {
-  const token = Jwt.sign(payload, String(process.env.AUTH_SECRET), {
-    expiresIn: expiresIn,
-  });
+// export async function signToken(payload: object, expiresIn: string) {
+//   const token = Jwt.sign(payload, String(process.env.AUTH_SECRET), {
+//     expiresIn: expiresIn,
+//   });
+//   return token;
+// }
+
+export async function signToken(payload: string, expiresIn: string) {
+  const secret = new TextEncoder().encode(process.env.AUTH_SECRET);
+  const token = await new jose.SignJWT({ payload })
+    .setProtectedHeader({
+      alg: "HS256",
+    })
+    .setExpirationTime("1h")
+    .sign(secret);
+  console.log("token: ", token);
   return token;
 }
 
-export function verifyToken(payload: string) {
+export async function verifyToken(claims: string) {
   let errorMessage;
   let decodedPayload;
-  Jwt.verify(payload, String(process.env.AUTH_SECRET), function (err, decoded) {
-    if (err) {
-      errorMessage = err.message;
-    } else {
-      decodedPayload = decoded;
-    }
-  });
+  const secret = new TextEncoder().encode(process.env.AUTH_SECRET);
+  try {
+    const { payload } = await jose.jwtVerify(claims, secret);
+    decodedPayload = payload;
+  } catch (error) {
+    console.log(error);
+
+    errorMessage = error;
+  }
   return { errorMessage, decodedPayload };
 }
