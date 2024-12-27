@@ -6,9 +6,11 @@ export async function POST(req: NextRequest) {
   const { payload } = await req.json();
 
   const { errorMessage, decodedPayload } = await verifyToken(payload);
+
   if (errorMessage) {
     return NextResponse.json({ error: errorMessage });
   }
+
   try {
     await prisma.user.update({
       where: { email: String(decodedPayload.email) },
