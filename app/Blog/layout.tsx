@@ -5,12 +5,15 @@ import SearchBar from "@/components/ui/SearchBar";
 import Recommendation from "@/components/Blog/Recommendation";
 import { TbUserCircle, TbPencil } from "react-icons/tb";
 import Link from "next/link";
+import useUser from "@/lib/getUser";
 
 interface LayoutProps {
   children: ReactNode;
 }
 export default function Layout({ children }: LayoutProps) {
-  const pathname = usePathname(); ///Blog
+  const { user, loading, error } = useUser();
+
+  const pathname = usePathname(); // /Blog
   const [isHomepage, setIsHomePage] = useState(true);
   useEffect(() => {
     if (pathname === "/Blog") {
@@ -42,10 +45,12 @@ export default function Layout({ children }: LayoutProps) {
           </Link>
 
           <Link href="/Auth/Login">
-            <TbUserCircle
-              className="text-item-foreground h-[2rem] w-[2rem] sm:h-[2.5rem] sm:w-[2.5rem]
+            {user?.name ?? (
+              <TbUserCircle
+                className="text-item-foreground h-[2rem] w-[2rem] sm:h-[2.5rem] sm:w-[2.5rem]
            hover:text-white hover:cursor-pointer transition-all duration-300"
-            />
+              />
+            )}
           </Link>
         </div>
       </div>

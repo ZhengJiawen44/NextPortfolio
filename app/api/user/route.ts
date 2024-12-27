@@ -19,7 +19,6 @@ export async function GET(req: NextRequest) {
     if (errorMessage || !decodedPayload.id) {
       return NextResponse.json({ error: "Invalid token" }, { status: 403 });
     }
-
     //query database
     const user = await prisma.user.findUnique({
       where: { id: decodedPayload.id },
@@ -31,7 +30,7 @@ export async function GET(req: NextRequest) {
     }
 
     //return user object
-    return NextResponse.json({ user });
+    return NextResponse.json(user);
   } catch (error) {
     return NextResponse.json(
       { error: "Internal server error" },
