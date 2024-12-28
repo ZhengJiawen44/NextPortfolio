@@ -26,6 +26,7 @@ const page = () => {
       toast.error(error);
     }
   };
+
   return <BlogForm onSubmit={onSubmit} />;
 };
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import RecommendationCard from "./RecommendationCard";
 import Link from "next/link";
+import LoadingForm from "@/components/Loading/LoadingForm";
 const Recommendation = () => {
   const [recommendations, setRecommendations] = useState<any[]>([]);
   const [lastRead, setLastRead] = useState<Record<string, string>>({});
@@ -31,16 +32,7 @@ const Recommendation = () => {
           <RecommendationCard key={_id} id={_id} title={title} date={date} />
         ))
       ) : (
-        <div className="flex flex-col gap-4 mb-8 mt-4">
-          <div className="bg-item animate-pulse h-6 w-[50%] rounded-sm"></div>
-          <div className="bg-item animate-pulse h-6 w-[15%] rounded-sm mb-5"></div>
-
-          <div className="bg-item animate-pulse h-6 w-[45%] rounded-sm"></div>
-          <div className="bg-item animate-pulse h-6 w-[15%] rounded-sm mb-5"></div>
-
-          <div className="bg-item animate-pulse h-6 w-[40%] rounded-sm"></div>
-          <div className="bg-item animate-pulse h-6 w-[15%] rounded-sm mb-5"></div>
-        </div>
+        <LoadingForm />
       )}
       <h1 className="mt-20 mb-8 text-xl">Continue reading</h1>
       <Link href={`/Blog/${lastRead.ID}`}>

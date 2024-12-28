@@ -30,7 +30,7 @@ export default function Layout({ children }: LayoutProps) {
       >
         <div className="flex max-w-[70%] sm:min-w-[50%] items-center gap-3">
           <h1 className="sm:text-[1.5rem]">
-            <Link href={"/Blog"}>BlogSpot</Link>
+            <Link href={"/Blog"}>BlogSpot</Link>1
           </h1>
           <SearchBar />
         </div>
