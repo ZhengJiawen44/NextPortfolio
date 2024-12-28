@@ -31,7 +31,16 @@ const Recommendation = () => {
           <RecommendationCard key={_id} id={_id} title={title} date={date} />
         ))
       ) : (
-        <p>Loading recommendations...</p>
+        <div className="flex flex-col gap-4 mb-8 mt-4">
+          <div className="bg-item animate-pulse h-6 w-[50%] rounded-sm"></div>
+          <div className="bg-item animate-pulse h-6 w-[15%] rounded-sm mb-5"></div>
+
+          <div className="bg-item animate-pulse h-6 w-[45%] rounded-sm"></div>
+          <div className="bg-item animate-pulse h-6 w-[15%] rounded-sm mb-5"></div>
+
+          <div className="bg-item animate-pulse h-6 w-[40%] rounded-sm"></div>
+          <div className="bg-item animate-pulse h-6 w-[15%] rounded-sm mb-5"></div>
+        </div>
       )}
       <h1 className="mt-20 mb-8 text-xl">Continue reading</h1>
       <Link href={`/Blog/${lastRead.ID}`}>
