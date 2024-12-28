@@ -14,6 +14,8 @@ export async function middleware(req: NextRequest, res: NextResponse) {
     ["DELETE", "PATCH"].includes(method) &&
     nextUrl.pathname.match(/^\/api\/Blog\/[^/]+$/)
   ) {
+    console.log("hit");
+
     const response = chainMiddleware(req, res, authenticate);
     return response;
   }

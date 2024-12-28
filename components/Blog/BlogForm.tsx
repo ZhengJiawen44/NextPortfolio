@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 type blogProps = {
   title?: string;
   subtitle?: string;
-  length?: string;
+  length?: number;
   content?: string;
   onSubmit: Function;
 };
@@ -34,7 +34,7 @@ const BlogForm = ({
     resolver: zodResolver(blogZodSchema),
     defaultValues: {
       title: title || "",
-      length: length || "",
+      length: length || 1,
       content: content || "",
       subtitle: subtitle || "",
     },

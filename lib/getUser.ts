@@ -13,7 +13,6 @@ const useUser = () => {
 
   const fetchUser = async () => {
     setLoading(true);
-    console.log("loading");
 
     try {
       const response = await fetch("/api/user", {
@@ -26,14 +25,12 @@ const useUser = () => {
 
       setUser(user);
     } catch (error) {
-      console.log("error!");
       setError(
         error instanceof Error
           ? error.message
           : "an unexpected error occured while fetching user"
       );
     } finally {
-      console.log("finished");
       setLoading(false);
     }
   };

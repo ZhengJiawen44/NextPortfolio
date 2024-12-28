@@ -5,6 +5,7 @@ import LoadingForm from "@/components/Loading/LoadingForm";
 const Recommendation = () => {
   const [recommendations, setRecommendations] = useState<any[]>([]);
   const [lastRead, setLastRead] = useState<Record<string, string>>({});
+
   useEffect(() => {
     async function getRecommendations() {
       try {
@@ -27,13 +28,12 @@ const Recommendation = () => {
   return (
     <div>
       <h1 className="mb-8 text-xl">Recommended</h1>
-      {recommendations.length > 0 ? (
-        recommendations.map(({ _id, title, date }) => (
-          <RecommendationCard key={_id} id={_id} title={title} date={date} />
-        ))
-      ) : (
-        <LoadingForm />
-      )}
+
+      {recommendations.length > 0
+        ? recommendations.map(({ _id, title, date }) => (
+            <RecommendationCard key={_id} id={_id} title={title} date={date} />
+          ))
+        : ""}
       <h1 className="mt-20 mb-8 text-xl">Continue reading</h1>
       <Link href={`/Blog/${lastRead.ID}`}>
         <p className=" font-bold font-grotesk w-[95%] mb-2 tracking-tighter text-xl">

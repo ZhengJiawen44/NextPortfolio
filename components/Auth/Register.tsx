@@ -55,12 +55,12 @@ const Register = () => {
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="w-[90%] sm:w-[60%] md:w-[60%] lg:w-[50%] xl:w-[40%] 2xl:w-[30%] bg-item
-             px-5 md:px-16 py-4 sm:py-9 rounded-2xl grid gap-y-2 md:gap-y-7
+             px-5 md:px-16 py-4 sm:py-9 rounded-2xl grid gap-y-2 md:gap-y-5
               border-item-foreground border-[1px] shadow-2xl shadow-black
                mb-6 sm:mb-0"
         >
-          <h1 className="m-auto text-2xl sm:text-4xl">Register</h1>
-          <p className="m-auto opacity-55 text-sm md:text-medium">Welcome</p>
+          <h1 className="m-auto text-2xl sm:text-4xl">Signup</h1>
+
           <FormField
             control={form.control}
             name="name"
@@ -137,7 +137,7 @@ const Register = () => {
           <Button
             type="submit"
             disabled={form.formState.isSubmitting}
-            className="mt-3 text-base rounded-lg"
+            className="mt-3 text-base rounded-md"
           >
             Register
           </Button>

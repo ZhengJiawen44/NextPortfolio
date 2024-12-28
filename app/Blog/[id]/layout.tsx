@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import Link from "next/link";
+
 interface LayoutProps {
   children: ReactNode;
 }
