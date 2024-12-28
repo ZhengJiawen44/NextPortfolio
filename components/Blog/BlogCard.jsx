@@ -24,6 +24,8 @@ const BlogCard = ({ id, title, length, date, displayData }) => {
           <p className="mr-6">{length} min read</p>
           <p className="mr-6">{date}</p>
           <button
+            id="bookmarkButton"
+            aria-label="bookmark button"
             onClick={(event) => {
               event.stopPropagation();
               console.log("bookmarked");

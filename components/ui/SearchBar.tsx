@@ -9,6 +9,7 @@ const SearchBar = () => {
  w-full h-10 sm:h-12  pr-3 sm:pr-5"
     >
       <input
+        aria-label="Search blogs"
         type="text"
         className=" w-full h-[100%] bg-transparent pl-3 sm:pl-4 text-medium
   outline-none "
