@@ -54,7 +54,7 @@ const Register = () => {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="w-[90%] md:w-[80%] lg:w-[50%] 2xl:w-[30%] bg-item
+          className="w-[90%] sm:w-[60%] md:w-[60%] lg:w-[50%] xl:w-[40%] 2xl:w-[30%] bg-item
              px-5 md:px-16 py-4 sm:py-9 rounded-2xl grid gap-y-2 md:gap-y-7
               border-item-foreground border-[1px] shadow-2xl shadow-black
                mb-6 sm:mb-0"
