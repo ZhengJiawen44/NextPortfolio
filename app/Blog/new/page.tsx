@@ -2,14 +2,14 @@
 import React from "react";
 import { toast } from "react-toastify";
 import { z } from "zod";
-import { blog } from "@/schemas";
+import { blogZodSchema } from "@/schemas";
 import { useRouter } from "next/navigation";
 
 import BlogForm from "@/components/Blog/BlogForm";
 
 const page = () => {
   const router = useRouter();
-  const onSubmit = async (values: z.infer<typeof blog>) => {
+  const onSubmit = async (values: z.infer<typeof blogZodSchema>) => {
     const res = await fetch("/api/Blog", {
       method: "POST",
       body: JSON.stringify(values),

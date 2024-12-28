@@ -37,7 +37,7 @@ const BlogSection = async ({ displayAll }) => {
       {displayData.length > 0
         ? displayData.map(({ _id, title, subtitle, length, date, content }) => {
             let displayData = subtitle;
-            if (subtitle === "") {
+            if (subtitle === "" || typeof subtitle === "undefined") {
               displayData = content;
             }
 

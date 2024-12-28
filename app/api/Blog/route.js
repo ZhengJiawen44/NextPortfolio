@@ -1,30 +1,31 @@
 import { Blog } from "@/app/(models)/BlogModel";
 import { NextResponse } from "next/server";
-import { validate } from "@/lib/blogValidation";
 import * as dayjs from "dayjs";
+import { blogZodSchema } from "@/schemas/index";
 
 export async function POST(req) {
   try {
     const body = await req.json();
 
-    const parsedData = validate(body);
-    if (parsedData === true) {
-      const blog = await Blog.create(body);
-      if (blog) {
-        return NextResponse.json(
-          { message: "created successfully" },
-          { status: 200 }
-        );
-      }
-      throw new Error("error: no entry returned from database");
-    } else {
+    //zod validate
+    const parseResult = blogZodSchema.safeParse(body);
+
+    if (!parseResult.success) {
+      return NextResponse.json({ error: parseResult.error }, { status: 400 });
+    }
+    const blogData = parseResult.data;
+
+    //create blog
+    const blog = await Blog.create(blogData);
+    if (!blog) {
       return NextResponse.json(
-        { message: "bad input; please check your input values" },
-        { status: 400 }
+        { error: "blog could not be created" },
+        { status: 500 }
       );
     }
+    return NextResponse.json({ message: "blog created!" }, { status: 200 });
   } catch (error) {
-    console.log(error.message);
+    console.error(error);
     return NextResponse.json({ message: error.message }, { status: 500 });
   }
 }
