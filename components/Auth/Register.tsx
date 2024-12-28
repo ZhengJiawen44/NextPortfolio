@@ -50,90 +50,109 @@ const Register = () => {
   };
 
   return (
-    <div className="w-[100vw] h-[100vh]">
-      <div className=" flex justify-center items-center w-full h-full">
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="w-[90%] md:w-[80%] lg:w-[50%] 2xl:w-[30%] bg-item
-             px-5 md:px-16 py-9 rounded-2xl grid gap-y-2 md:gap-y-7 border-item-foreground
-              border-[1px] shadow-2xl shadow-black mb-6 sm:mb-0"
+    <div className="min-w-full min-h-screen flex items-center justify-center py-6 sm:py-0">
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="w-[90%] md:w-[80%] lg:w-[50%] 2xl:w-[30%] bg-item
+             px-5 md:px-16 py-4 sm:py-9 rounded-2xl grid gap-y-2 md:gap-y-7
+              border-item-foreground border-[1px] shadow-2xl shadow-black
+               mb-6 sm:mb-0"
+        >
+          <h1 className="m-auto text-2xl sm:text-4xl">Register</h1>
+          <p className="m-auto opacity-55 text-sm md:text-medium">Welcome</p>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="sm:text-[1rem]">Name</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder=""
+                    {...field}
+                    className="h-9 sm:h-[2.5rem]"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="sm:text-[1rem]">Email</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder=""
+                    className="h-9 sm:h-[2.5rem]"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="sm:text-[1rem]">Password</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder=""
+                    className="h-9 sm:h-[2.5rem]"
+                    {...field}
+                    type="password"
+                  />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="confirmPassword"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="sm:text-[1rem]">
+                  Confirm password
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder=""
+                    className="h-9 sm:h-[2.5rem]"
+                    {...field}
+                    type="password"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button
+            type="submit"
+            disabled={form.formState.isSubmitting}
+            className="mt-3 text-base rounded-lg"
           >
-            <h1 className="m-auto text-4xl ">Register</h1>
-            <p className="m-auto opacity-55 text-md">Welcome</p>
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[1rem]">Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[1rem]">Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[1rem]">Password</FormLabel>
-                  <FormControl>
-                    <Input placeholder="" {...field} type="password" />
-                  </FormControl>
+            Register
+          </Button>
+          <Oauth />
 
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="confirmPassword"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[1rem]">
-                    Confirm password
-                  </FormLabel>
-                  <FormControl>
-                    <Input placeholder="" {...field} type="password" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button
-              type="submit"
-              disabled={form.formState.isSubmitting}
-              className="mt-2 text-base rounded-lg"
-            >
-              Register
-            </Button>
-            <Oauth />
+          <FormToast message={message} isError={isError} />
 
-            <FormToast message={message} isError={isError} />
-
-            <p className="m-auto opacity-50 mt-8 ">
-              already have an account?
-              <Link href="Login">{" Login"}</Link>
-            </p>
-          </form>
-        </Form>
-      </div>
+          <p className="text-[0.8rem] sm:text-[1rem] m-auto text-item-foreground mt-4 ">
+            already have an account?
+            <Link href="Login" className="hover:underline hover:text-white">
+              {" Login"}
+            </Link>
+          </p>
+        </form>
+      </Form>
     </div>
   );
 };

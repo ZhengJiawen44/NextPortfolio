@@ -12,27 +12,27 @@ const Oauth = () => {
           other log in options
         </p>
       </div>
-      <div className="flex gap-10">
+      <div className="flex gap-4 sm:gap-7">
         <Link
           href="/"
-          className="bg-[#cccccc] m-auto w-1/2 py-1 rounded-md transition-all duration-300
+          className=" border-[1px] border-item-foreground w-1/2 py-2  rounded-md transition-all duration-300
     hover:shadow-lg hover:shadow-black "
         >
           <Image
             src={Github}
             alt="github logo"
-            className="w-[2rem] md:w-[2.7rem] m-auto"
+            className="w-[1.6rem]  m-auto"
           />
         </Link>
         <Link
           href="/"
-          className="bg-[#cccccc] m-auto w-1/2 py-1 rounded-md transition-all duration-300
+          className="border-[1px] border-item-foreground w-1/2 py-2 rounded-md transition-all duration-300
     hover:shadow-lg hover:shadow-black"
         >
           <Image
             src={Google}
             alt="google logo"
-            className="w-[2rem] md:w-[2.7rem] m-auto"
+            className="w-[1.6rem]  m-auto"
           />
         </Link>
       </div>

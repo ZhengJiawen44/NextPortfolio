@@ -54,71 +54,81 @@ const Login = () => {
   };
 
   return (
-    <div className="w-[100vw] h-[100vh]">
-      <div className=" flex justify-center items-center w-full h-full">
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="w-[90%] md:w-[80%] lg:w-[50%] 2xl:w-[30%] bg-item
+    <div className="min-w-full min-h-screen flex items-center justify-center">
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="w-[90%] md:w-[80%] lg:w-[50%] 2xl:w-[30%] bg-item
              px-5 md:px-16 py-9 rounded-2xl grid gap-y-2 md:gap-y-7 border-item-foreground
               border-[1px] shadow-2xl shadow-black mb-6 sm:mb-0"
-          >
-            <h1 className="m-auto text-4xl ">Login</h1>
-            <p className="m-auto opacity-55 text-md">Welcome back</p>
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[1rem]">Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder="" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[1rem]">Password</FormLabel>
-                  <FormControl>
-                    <Input placeholder="" {...field} type="password" />
-                  </FormControl>
-                  <FormDescription>
-                    <a href="/" className="underline">
-                      forgot password?
-                    </a>
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <Button
-              type="submit"
-              disabled={form.formState.isSubmitting}
-              className="mt-2 text-base rounded-lg"
-            >
-              Login
-            </Button>
-            {message !== "" ? (
-              <FormToast message={message} isError={isError} />
-            ) : (
-              ""
+        >
+          <h1 className="m-auto text-2xl sm:text-4xl">Login</h1>
+          <p className="m-auto opacity-55 text-md">Welcome back</p>
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-[1rem]">Email</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder=""
+                    className="h-9 sm:h-[2.5rem]"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
             )}
+          />
 
-            <Oauth />
-            <p className="m-auto opacity-50 mt-8">
-              dont have an account?
-              <Link href="Register"> Register</Link>
-            </p>
-          </form>
-        </Form>
-      </div>
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="text-[1rem]">Password</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder=""
+                    className="h-9 sm:h-[2.5rem]"
+                    {...field}
+                    type="password"
+                  />
+                </FormControl>
+                <FormDescription>
+                  <a href="/" className="underline">
+                    forgot password?
+                  </a>
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <Button
+            type="submit"
+            disabled={form.formState.isSubmitting}
+            className="mt-3 text-base rounded-lg "
+          >
+            Login
+          </Button>
+          {message !== "" ? (
+            <FormToast message={message} isError={isError} />
+          ) : (
+            ""
+          )}
+
+          <Oauth />
+
+          <p className="text-[0.8rem] sm:text-[1rem] m-auto text-item-foreground mt-4 ">
+            dont have an account?
+            <Link href="Register" className="hover:underline hover:text-white">
+              {" Register"}
+            </Link>
+          </p>
+        </form>
+      </Form>
     </div>
   );
 };
