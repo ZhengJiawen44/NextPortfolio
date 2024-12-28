@@ -10,8 +10,8 @@ export const blogZodSchema = z.object({
     .max(200, { message: "subtitles cannot be longer than 200 words" })
     .optional(),
   length: z
-    .string({ message: "length cannot be empty!" })
-    .max(2, { message: "length cannot be more than 2 characters!" })
+    .number({ message: "length cannot be empty!" })
+    .max(2, { message: "length cannot be more than 60 minutes!" })
     .min(1, { message: "length is required" }),
   content: z
     .string({ message: "content cannot be empty!" })

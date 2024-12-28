@@ -26,4 +26,16 @@ model User {
   emailVerified Boolean @default(false)
   password String
   createdAt DateTime @default(now())
+  blogs Blog[]
+}
+
+model Blog {
+  id Int @id @default(autoincrement())
+  title String 
+  subtitle String?
+  content String
+  length Int
+  createdAt DateTime @default(now())
+  author User @relation(fields:[authorID], references: [id]) 
+  authorID Int
 }

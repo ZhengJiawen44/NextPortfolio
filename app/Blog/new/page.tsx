@@ -10,20 +10,22 @@ import BlogForm from "@/components/Blog/BlogForm";
 const page = () => {
   const router = useRouter();
   const onSubmit = async (values: z.infer<typeof blogZodSchema>) => {
-    const res = await fetch("/api/Blog", {
-      method: "POST",
-      body: JSON.stringify(values),
-    });
-    const { message } = await res.json();
     try {
-      if (res.ok) {
-        toast.success(message);
-        router.push("/Blog");
-      } else {
-        toast.error(message);
+      const res = await fetch("/api/Blog", {
+        method: "POST",
+        body: JSON.stringify(values),
+      });
+      if (!res.ok) {
+        toast.error("you need to log in again");
+        return;
       }
-    } catch (error: any) {
-      toast.error(error);
+
+      const { message } = await res.json();
+
+      toast.success(message);
+      router.push("/Blog");
+    } catch (error) {
+      console.log(error);
     }
   };
 

@@ -39,7 +39,7 @@ export default function Layout({ children }: LayoutProps) {
           <Link
             aria-label="create a new blog"
             className="m-0 p-0  border-[1px] bg-item w-fit h-fit px-4 py-2  sm:flex sm:items-center sm:gap-1 rounded-[20px] text-item-foreground hover:text-foreground"
-            href="/Blog/new"
+            href={user === null ? "/Auth/Login" : "/Blog/new"}
           >
             <TbPencil />
             <p className="hidden sm:block m-0 p-0">write</p>

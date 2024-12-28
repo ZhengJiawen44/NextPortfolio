@@ -1,6 +1,6 @@
 import { ZodError } from "zod";
 
-import { blog } from "@/schemas/index";
+import { blogZodSchema } from "@/schemas/index";
 type ValidateProps = {
   title: string;
   length: string;
@@ -9,7 +9,7 @@ type ValidateProps = {
 
 export const validate = (data: ValidateProps) => {
   try {
-    blog.parse(data);
+    blogZodSchema.parse(data);
     return true;
   } catch (error) {
     if (error instanceof ZodError) {
@@ -21,4 +21,4 @@ export const validate = (data: ValidateProps) => {
   }
 };
 
-export default blog;
+export default blogZodSchema;
