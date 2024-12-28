@@ -2,7 +2,7 @@
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { blog } from "@/schemas";
+import { blogZodSchema } from "@/schemas";
 import { useForm } from "react-hook-form";
 import Editor from "@/components/RichText/Editor";
 import {
@@ -30,8 +30,8 @@ const BlogForm = ({
   content,
   onSubmit,
 }: blogProps) => {
-  const form = useForm<z.infer<typeof blog>>({
-    resolver: zodResolver(blog),
+  const form = useForm<z.infer<typeof blogZodSchema>>({
+    resolver: zodResolver(blogZodSchema),
     defaultValues: {
       title: title || "",
       length: length || "",
