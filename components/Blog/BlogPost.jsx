@@ -28,6 +28,8 @@ import {
 } from "@/components/ui/alert-dialog";
 
 const BlogPost = ({ id, title, subtitle, length, date, content }) => {
+  console.log(id);
+
   const searchParams = useSearchParams();
   const isUpdate = searchParams.get("action") === "update";
 

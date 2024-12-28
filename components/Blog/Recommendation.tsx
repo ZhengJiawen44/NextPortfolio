@@ -29,9 +29,9 @@ const Recommendation = () => {
     <div>
       <h1 className="mb-8 text-xl">Recommended</h1>
 
-      {recommendations.length > 0
-        ? recommendations.map(({ _id, title, date }) => (
-            <RecommendationCard key={_id} id={_id} title={title} date={date} />
+      {recommendations?.length > 0
+        ? recommendations.map(({ id, title, date }) => (
+            <RecommendationCard key={id} id={id} title={title} date={date} />
           ))
         : ""}
       <h1 className="mt-20 mb-8 text-xl">Continue reading</h1>

@@ -12,7 +12,7 @@ const Blog = async ({ params }: { params: { id: string } }) => {
     });
 
     if (!res.ok) {
-      throw Error("blog not found");
+      throw Error(`${res.status} blog not found`);
     }
     const { formattedBlog } = await res.json();
     if (!formattedBlog) {
@@ -20,11 +20,11 @@ const Blog = async ({ params }: { params: { id: string } }) => {
     }
     return (
       <BlogPost
-        id={formattedBlog._id}
+        id={formattedBlog.id}
         title={formattedBlog.title}
         subtitle={formattedBlog.subtitle}
         length={formattedBlog.length}
-        date={formattedBlog.date}
+        date={formattedBlog.createdAt}
         content={formattedBlog.content}
       />
     );

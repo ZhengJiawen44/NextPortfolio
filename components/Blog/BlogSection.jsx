@@ -35,23 +35,25 @@ const BlogSection = async ({ displayAll }) => {
       </div>
 
       {displayData.length > 0
-        ? displayData.map(({ _id, title, subtitle, length, date, content }) => {
-            let displayData = subtitle;
-            if (subtitle === "" || typeof subtitle === "undefined") {
-              displayData = content;
-            }
+        ? displayData.map(
+            ({ id, title, subtitle, length, createdAt, content, authorID }) => {
+              let displayData = subtitle;
+              if (subtitle === "" || typeof subtitle === "undefined") {
+                displayData = content;
+              }
 
-            return (
-              <BlogCardWrapper
-                key={_id}
-                id={_id}
-                title={title}
-                length={length}
-                date={date}
-                displayData={displayData}
-              />
-            );
-          })
+              return (
+                <BlogCardWrapper
+                  key={id}
+                  id={id}
+                  title={title}
+                  length={length}
+                  date={createdAt}
+                  displayData={displayData}
+                />
+              );
+            }
+          )
         : "No blogs to display"}
 
       <Link
