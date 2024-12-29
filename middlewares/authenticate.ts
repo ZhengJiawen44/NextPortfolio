@@ -9,13 +9,13 @@ export async function authenticate(req: NextRequest, res: NextResponse) {
 
   if (!token) {
     return NextResponse.json(
-      { error: "please authnenticate yoursefl" },
+      { error: "please authenticate yourself" },
       { status: 401 }
     );
   }
 
   //verify token signature
-  const { errorMessage } = await verifyToken(token);
+  const { errorMessage, decodedPayload } = await verifyToken(token);
   if (errorMessage) {
     return NextResponse.json({ error: "user login expired" }, { status: 401 });
   }

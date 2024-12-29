@@ -15,7 +15,7 @@ const BlogCard = ({ id, title, length, date, displayData }) => {
       }}
     >
       <div className="relative">
-        <h1 className=" pt-[2rem]  w-[95%] m-auto  mb-7 tracking-tighter text-2xl sm:text-4xl md:text-subtitle">
+        <h1 className=" pt-[2rem]  w-[95%] m-auto  mb-7 tracking-tighter text-xl  md:text-2xl">
           {title}
         </h1>
 

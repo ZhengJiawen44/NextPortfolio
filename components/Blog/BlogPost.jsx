@@ -27,9 +27,15 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
-const BlogPost = ({ id, title, subtitle, length, date, content }) => {
-  console.log(id);
-
+const BlogPost = ({
+  id,
+  title,
+  subtitle,
+  length,
+  date,
+  content,
+  authorName,
+}) => {
   const searchParams = useSearchParams();
   const isUpdate = searchParams.get("action") === "update";
 
@@ -41,12 +47,11 @@ const BlogPost = ({ id, title, subtitle, length, date, content }) => {
     try {
       const res = await fetch(`/api/Blog/${id}`, { method: "DELETE" });
       const { message } = await res.json();
-      if (res.ok) {
-        toast.success(message);
-        router.push("/Blog");
-      } else {
-        throw new Error(message);
+      if (!res.ok) {
+        toast.error("you need to login");
       }
+      toast.success(message);
+      router.push("/Blog");
     } catch (error) {
       toast.error(error.message);
     } finally {
@@ -86,14 +91,16 @@ const BlogPost = ({ id, title, subtitle, length, date, content }) => {
   }
 
   //continue reading function
-  localStorage.setItem("lastReadTitle", title);
-  localStorage.setItem("lastReadID", id);
+  if (typeof windows !== "undefined") {
+    localStorage.setItem("lastReadTitle", title);
+    localStorage.setItem("lastReadID", id);
+  }
 
   return (
     <>
       <div className="md:w-[80%] m-auto pt-[6rem] mt-10 h-fit pb-10 mb-10 rounded-[25px]">
-        <div className="flex  items-center justify-between mb-10 ">
-          <h1 className=" text-foreground tracking-tighter text-4xl sm:text-4xl md:text-title">
+        <div className="flex  items-center justify-between mb-10 gap-48 ">
+          <h1 className=" text-foreground tracking-tighter text-xl md:text-2xl">
             {title}
           </h1>
 
@@ -128,7 +135,7 @@ const BlogPost = ({ id, title, subtitle, length, date, content }) => {
           <div>
             <div className="flex mb-1">
               <p className="mr-4 sm:mr-14 font-semibold text-[1.1rem]">
-                Zheng Jiawen
+                {authorName}
               </p>
               <p className="mr-4">.</p>
               <a className="text-[0.8rem]">Follow</a>

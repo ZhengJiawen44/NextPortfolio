@@ -1,12 +1,20 @@
-import { Blog } from "@/app/(models)/BlogModel";
 import { NextRequest, NextResponse } from "next/server";
 import { blogZodSchema } from "@/schemas/index";
 import * as dayjs from "dayjs";
 import { prisma } from "@/lib/prisma";
-import { data } from "@/lib/data/projectData";
 
-export async function GET(req: NextRequest, { params }) {
+interface RouteParams {
+  params: {
+    id: string;
+  };
+}
+
+export async function GET(req: NextRequest, { params }: RouteParams) {
   try {
+    //get the header userID
+    const userId = req.headers.get("x-user-ID");
+    console.log(userId);
+
     const { id } = await params;
     if (!id) {
       return NextResponse.json(
@@ -21,9 +29,13 @@ export async function GET(req: NextRequest, { params }) {
       return NextResponse.json({ error: "Blog2 not found" }, { status: 404 });
     }
 
+    //also get the author name and profile pic
+    const user = await prisma.user.findUnique({ where: { id: blog.authorID } });
+
     const formattedBlog = {
       ...blog,
       createdAt: dayjs(blog.createdAt).format("DD/MM/YYYY"),
+      authorName: user?.name,
     };
 
     return NextResponse.json({ formattedBlog }, { status: 200 });
@@ -34,10 +46,9 @@ export async function GET(req: NextRequest, { params }) {
   }
 }
 
-export async function DELETE(req: NextRequest, { params }) {
+export async function DELETE(req: NextRequest, { params }: RouteParams) {
   try {
     const { id } = await params;
-    console.log(id);
 
     if (!id) {
       return NextResponse.json(
@@ -57,7 +68,7 @@ export async function DELETE(req: NextRequest, { params }) {
   }
 }
 
-export async function PATCH(req: NextRequest, { params }) {
+export async function PATCH(req: NextRequest, { params }: RouteParams) {
   try {
     const { id } = await params;
     if (!id) {

@@ -4,9 +4,15 @@ import * as dayjs from "dayjs";
 import { blogZodSchema } from "@/schemas/index";
 import { prisma } from "@/lib/prisma";
 import { verifyToken } from "@/lib/token";
+import { cookies } from "next/headers";
+import { getToken } from "@/lib/getToken";
 
 export async function POST(req: NextRequest) {
   try {
+    //access the request header for user ID passed from middleware
+    const userID = req.headers.get("x-user-ID");
+    console.log(userID);
+
     const body = await req.json();
 
     //zod validate
@@ -20,6 +26,7 @@ export async function POST(req: NextRequest) {
       id: String;
     };
     //get cookie
+
     const cookie = req.cookies.get("token");
     //verify cookie
     const { errorMessage, decodedPayload } = await verifyToken(
@@ -35,8 +42,6 @@ export async function POST(req: NextRequest) {
       ...parseResult.data,
       authorID: (decodedPayload as DecodedPayload).id,
     };
-    // const blogData = parseResult.data;
-    console.log(blogData);
 
     //create blog
     const blog = await prisma.blog.create({ data: blogData });
@@ -57,6 +62,9 @@ export async function POST(req: NextRequest) {
 
 export async function GET() {
   try {
+    // const { errorMessage, decodedPayload } = await getToken();
+    // console.log(decodedPayload);
+
     const blogs = await prisma.blog.findMany({});
     // const formattedBlogs = blogs;
     const formattedBlogs = blogs.map((blog) => ({
@@ -71,10 +79,4 @@ export async function GET() {
     }
     console.log(error);
   }
-}
-
-export async function DELETE() {
-  const blogs = await Blog.deleteMany();
-
-  return NextResponse.json({ blogs: blogs });
 }

@@ -16,7 +16,7 @@ const page = () => {
         body: JSON.stringify(values),
       });
       if (!res.ok) {
-        toast.error("you need to log in again");
+        toast.error("you need to log in");
         return;
       }
 

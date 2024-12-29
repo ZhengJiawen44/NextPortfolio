@@ -18,6 +18,7 @@ const Blog = async ({ params }: { params: { id: string } }) => {
     if (!formattedBlog) {
       throw Error("formattedBlog is undefined");
     }
+
     return (
       <BlogPost
         id={formattedBlog.id}
@@ -26,6 +27,7 @@ const Blog = async ({ params }: { params: { id: string } }) => {
         length={formattedBlog.length}
         date={formattedBlog.createdAt}
         content={formattedBlog.content}
+        authorName={formattedBlog.authorName}
       />
     );
   } catch (error) {
