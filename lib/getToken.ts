@@ -13,7 +13,6 @@ interface returnType {
 export async function getToken(): Promise<returnType> {
   try {
     const cookie = await cookies();
-    console.log(cookie);
 
     const token = cookie.get("token")?.value;
     const { errorMessage, decodedPayload } = await verifyToken(String(token));

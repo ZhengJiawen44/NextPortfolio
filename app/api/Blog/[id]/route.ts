@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { blogZodSchema } from "@/schemas/index";
 import * as dayjs from "dayjs";
 import { prisma } from "@/lib/prisma";
+import { getToken } from "@/lib/getToken";
+import { cookies } from "next/headers";
 
 interface RouteParams {
   params: {
@@ -12,8 +14,8 @@ interface RouteParams {
 export async function GET(req: NextRequest, { params }: RouteParams) {
   try {
     //get the header userID
-    const userId = req.headers.get("x-user-ID");
-    console.log(userId);
+    // const userId = req.headers.get("x-user-ID");
+    // console.log(userId);
 
     const { id } = await params;
     if (!id) {

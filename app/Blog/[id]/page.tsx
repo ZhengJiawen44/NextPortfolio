@@ -1,4 +1,8 @@
 import BlogPost from "@/components/Blog/BlogPost";
+import { getToken } from "@/lib/getToken";
+import { verifyToken } from "@/lib/token";
+import { cookies } from "next/headers";
+import { prisma } from "@/lib/prisma";
 
 const Blog = async ({ params }: { params: { id: string } }) => {
   try {
@@ -10,6 +14,13 @@ const Blog = async ({ params }: { params: { id: string } }) => {
       method: "GET",
       cache: "no-store",
     });
+
+    const { errorMessage, decodedPayload } = await getToken();
+    const user = await prisma.user.findUnique({
+      where: { id: Number(decodedPayload.id) },
+      select: { email: true, name: true, role: true },
+    });
+    console.log(user);
 
     if (!res.ok) {
       throw Error(`${res.status} blog not found`);

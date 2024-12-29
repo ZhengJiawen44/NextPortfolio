@@ -16,8 +16,9 @@ export async function authenticate(req: NextRequest, res: NextResponse) {
 
   //verify token signature
   const { errorMessage, decodedPayload } = await verifyToken(token);
+
   if (errorMessage) {
-    return NextResponse.json({ error: "user login expired" }, { status: 401 });
+    return NextResponse.redirect(new URL("/Auth/Login", req.url));
   }
 
   return res;

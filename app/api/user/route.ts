@@ -7,6 +7,7 @@ export async function GET(req: NextRequest) {
   try {
     //get token
     const token = req.cookies.get("token")?.value;
+
     if (!token) {
       return NextResponse.json(
         { error: "Authentication required" },
@@ -19,6 +20,7 @@ export async function GET(req: NextRequest) {
     if (errorMessage || !decodedPayload.id) {
       return NextResponse.json({ error: "Invalid token" }, { status: 403 });
     }
+
     //query database
     const user = await prisma.user.findUnique({
       where: { id: decodedPayload.id },

@@ -47,11 +47,11 @@ export async function middleware(req: NextRequest, res: NextResponse) {
   ) {
     console.log("blog/id?action=update hit");
 
+    const cookie = await cookies();
+
     // Handle blog route logic here
     const response = await authenticate(req, res);
-    if (!response.ok) {
-      return NextResponse.redirect(new URL("/Auth/Login", req.url));
-    }
+    console.log(response);
   }
 
   return NextResponse.next();
